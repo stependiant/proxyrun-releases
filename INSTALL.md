@@ -31,20 +31,23 @@ After publication, run this once to add the repository. The public signing-key
 fingerprint is `EC252089E3F4AE497CC0C0483B3CAEC447295DA7`.
 
 ```bash
+(
+set -e
 sudo apt update
 sudo apt install curl ca-certificates gnupg
 proxyrun_setup="$(mktemp -d)"
 for file in proxyrun-archive-keyring.gpg proxyrun.sources proxyrun.pref; do
   curl --fail --location "https://stependiant.github.io/proxyrun-releases/apt/$file" \
-    --output "$proxyrun_setup/$file" || exit 1
+    --output "$proxyrun_setup/$file"
 done
 fingerprint="$(gpg --show-keys --with-colons "$proxyrun_setup/proxyrun-archive-keyring.gpg" | awk -F: '$1 == "fpr" { print $10; exit }')"
-test "$fingerprint" = EC252089E3F4AE497CC0C0483B3CAEC447295DA7 || exit 1
+test "$fingerprint" = EC252089E3F4AE497CC0C0483B3CAEC447295DA7
 sudo install -m 644 "$proxyrun_setup/proxyrun-archive-keyring.gpg" /usr/share/keyrings/
 sudo install -m 644 "$proxyrun_setup/proxyrun.sources" /etc/apt/sources.list.d/
 sudo install -m 644 "$proxyrun_setup/proxyrun.pref" /etc/apt/preferences.d/
 sudo apt update
 sudo apt install proxyrun-gui
+)
 ```
 
 CLI only: `sudo apt install proxyrun`. Upgrade with the normal APT workflow.
