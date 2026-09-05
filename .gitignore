@@ -1,0 +1,10 @@
+# Public checkout: distribution files are release assets, never source imports.
+*.exe
+*.deb
+*.zip
+*.tar.gz
+*.pdb
+*.map
+.env*
+*.key
+*.pfx

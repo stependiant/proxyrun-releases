@@ -1,0 +1,39 @@
+name: Deploy download page and signed APT repository
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the reviewed repository snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release download v0.1.0-beta.1 --pattern proxyrun-apt-noble-amd64.tar.gz --pattern SHA256SUMS --dir download
+          cd download
+          awk '$2 == "proxyrun-apt-noble-amd64.tar.gz" { print }' SHA256SUMS > apt.sha256
+          test "$(wc -l < apt.sha256)" -eq 1
+          sha256sum --check apt.sha256
+          mkdir ../site
+          cp ../index.html ../site/index.html
+          tar -xzf proxyrun-apt-noble-amd64.tar.gz -C ../site --no-same-owner
+          test -f ../site/apt/dists/noble/InRelease
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
