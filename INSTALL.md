@@ -27,14 +27,22 @@ Once the signed APT repository is published, add its dedicated public key and
 source, then install `proxyrun-gui`. It depends on the CLI package `proxyrun`.
 The repository supplies only these packages. It does not replace OS libraries.
 
-Download `apt/proxyrun-archive-keyring.gpg`, `apt/proxyrun.sources` and
-`apt/proxyrun.pref` from the official release website. Check the announced key
-fingerprint. Install the public key as
-`/usr/share/keyrings/proxyrun-archive-keyring.gpg`, the source as
-`/etc/apt/sources.list.d/proxyrun.sources`, and the preferences as
-`/etc/apt/preferences.d/proxyrun.pref`.
+After publication, run this once to add the repository. The public signing-key
+fingerprint is `EC252089E3F4AE497CC0C0483B3CAEC447295DA7`.
 
 ```bash
+sudo apt update
+sudo apt install curl ca-certificates gnupg
+proxyrun_setup="$(mktemp -d)"
+for file in proxyrun-archive-keyring.gpg proxyrun.sources proxyrun.pref; do
+  curl --fail --location "https://stependiant.github.io/proxyrun-releases/apt/$file" \
+    --output "$proxyrun_setup/$file" || exit 1
+done
+fingerprint="$(gpg --show-keys --with-colons "$proxyrun_setup/proxyrun-archive-keyring.gpg" | awk -F: '$1 == "fpr" { print $10; exit }')"
+test "$fingerprint" = EC252089E3F4AE497CC0C0483B3CAEC447295DA7 || exit 1
+sudo install -m 644 "$proxyrun_setup/proxyrun-archive-keyring.gpg" /usr/share/keyrings/
+sudo install -m 644 "$proxyrun_setup/proxyrun.sources" /etc/apt/sources.list.d/
+sudo install -m 644 "$proxyrun_setup/proxyrun.pref" /etc/apt/preferences.d/
 sudo apt update
 sudo apt install proxyrun-gui
 ```
@@ -45,6 +53,10 @@ The package does not start a root-owned copy of the user's daemon during dpkg
 installation. CLI launches start the user daemon when needed; saved Auto proxy
 rules start in an XDG graphical login session. WSL without WSLg supports CLI use;
 GUI use requires WSLg and its Linux runtime dependencies.
+
+Before removal, close Proxyrun and applications using its proxy sessions, then run
+`proxyrun shutdown` as your normal user. Remove the packages with
+`sudo apt remove proxyrun-gui proxyrun`. This keeps saved profiles.
 
 Linux/WSL packages target Linux programs. Install the native Windows version to
 proxy Windows applications. Native Ubuntu and WSL require separate compatibility
