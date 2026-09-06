@@ -8,6 +8,26 @@ No account is required. Future proxy purchases or subscriptions will be optional
 Download installers from Releases or use the signed APT repository. WinGet is not
 available yet. This beta's Windows installer is unsigned.
 
+## How to use Proxyrun
+
+1. Install Proxyrun and open **Profiles**.
+2. Add your proxy server address, port, protocol and optional credentials.
+3. Save it and click **Check connection**.
+4. Open **Applications**, choose an app and click **Launch**.
+
+Use the pencil button on an application to choose its **Proxy profile**.
+**Use default profile** follows the star-marked profile in Profiles.
+Enable **Auto proxy** if you want the application to use the proxy when opened
+from its usual OS shortcut; wait for the rules to apply and restart the app.
+
+Prefer the terminal? Create a profile with `prun configure`, then launch an
+installed app with `prun chrome` or `prun run --profile work chrome`.
+`prun` and `proxyrun` share settings with the desktop app.
+
+[Read the Wiki](https://stependiant.github.io/proxyrun-releases/wiki/) ·
+[User guide on GitHub](USER-GUIDE.md) ·
+[Report a bug](https://github.com/stependiant/proxyrun-releases/issues/new)
+
 ## Download
 
 Download from [Releases](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.1):

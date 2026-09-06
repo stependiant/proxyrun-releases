@@ -30,6 +30,7 @@ jobs:
           test -f published-data/third-party/0.1.0-beta.1/proxyrun-third-party-0.1.0-beta.1.tar.gz
           mkdir site
           cp index.html site/index.html
+          cp -R wiki site/wiki
           cp published-data/SHA256SUMS site/SHA256SUMS
           cp -R published-data/apt published-data/third-party site/
           gpgv --keyring "$PWD/site/apt/proxyrun-archive-keyring.gpg" site/apt/dists/noble/InRelease
