@@ -10,7 +10,7 @@ Install Proxyrun, configure proxies and connect your apps. Windows x64 and Ubunt
 - [Check connection and latency](#check-connection)
 - [Launch applications](#applications)
 - [Auto proxy for normal OS launches](#auto-proxy)
-- [Codex, Claude Code and terminal apps](#interactive-terminal)
+- [Interactive terminal applications](#interactive-terminal)
 - [Command-line quick reference](#command-line)
 - [Troubleshooting](#troubleshooting)
 - [Updates and removal](#updates-and-removal)
@@ -150,11 +150,9 @@ Auto proxy changes system routes and DNS while active. It is not a persistent fi
 
 <a id="interactive-terminal"></a>
 
-## Codex, Claude Code and terminal apps
+## Interactive terminal applications
 
-[Run Codex CLI and Claude Code through a proxy](https://stependiant.github.io/proxyrun-releases/wiki/codex-claude-proxy/)
-
-For an interactive command such as Codex, add the command or its executable in Applications, enable Open in terminal and choose its proxy profile. The command must already be installed and runnable on that operating system.
+For an interactive command, add the command or its executable in Applications, enable Open in terminal and choose its proxy profile. The command must already be installed and runnable on that operating system.
 
 Launch opens an interactive terminal window for keyboard input. Closing that terminal window keeps its process running; reopen it from the application row. Use Stop when you want to end the launch.
 
