@@ -16,11 +16,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Download the reviewed repository snapshot
+      - name: Download reviewed support files from the private repository
         env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.PROXYRUN_SUPPORT_READ_TOKEN }}
+          GH_REPO: stependiant/proxyrun
         run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Configure PROXYRUN_SUPPORT_READ_TOKEN with Contents: read access to stependiant/proxyrun before deploying Pages."
+            exit 1
+          fi
           gh release download distribution-v0.1.0-beta.1 --pattern proxyrun-apt-noble-amd64.tar.gz --pattern proxyrun-third-party-0.1.0-beta.1.tar.gz --pattern SHA256SUMS --dir download
           cd download
           awk '$2 == "proxyrun-apt-noble-amd64.tar.gz" { print }' SHA256SUMS > apt.sha256
