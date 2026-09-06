@@ -1,0 +1,29 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Architectures: amd64
+Codename: noble
+Components: main
+Date: Sat, 05 Sep 2026 22:32:49 +0000
+Label: Proxyrun
+Origin: Proxyrun
+Suite: noble
+MD5Sum:
+ 97199fc8ccfd2db4eb7976d508fa33ae             1898 main/binary-amd64/Packages
+ d76fc0777d69f645bf0ac1173c4e068e              920 main/binary-amd64/Packages.gz
+SHA1:
+ 72e9b3da1155a858ce8f446cafef7c8d33d0b48d             1898 main/binary-amd64/Packages
+ 96fde2097b491fd14cf5101fbcb9f3f30c165bce              920 main/binary-amd64/Packages.gz
+SHA256:
+ fa90407b056bc887deef5c1611a7d6af76239e2f0bf016142a5bce2f0389e9ef             1898 main/binary-amd64/Packages
+ 16aed9815c4ae9011874c43dd63474d5d26c6dc40822da49ecb99e0817a88295              920 main/binary-amd64/Packages.gz
+SHA512:
+ fcabbc7f690f6b218464185ce2e133a289c4ea0c41f3013700e5146e8bbe2ee01af4d3574324c77b8809da33c1dad399f18dd4105aa76e58354a64cf80ac73fb             1898 main/binary-amd64/Packages
+ e40fcd8b8022b9296d5c1f1faba4caccdcc5312dba6dcf58978dde388547aa311ab801d752e1234627999e581208592731c0f484921eb1ffa2df45aa98e735e0              920 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYIAB0WIQTsJSCJ4/SuSXzAwEg7PK7ERyldpwUCapyYkQAKCRA7PK7ERyld
+p2cUAQDDmLGuKF4AW2O7IwrOuka4uK3FWkH21cKEw5DE4zv7cAD/dfOH+3EVSZ1O
+DubwCHy9OolhPuM92MY6RKlL2+c2/w0=
+=spH2
+-----END PGP SIGNATURE-----

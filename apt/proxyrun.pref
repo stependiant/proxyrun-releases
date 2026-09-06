@@ -1,0 +1,7 @@
+Package: *
+Pin: release o=Proxyrun
+Pin-Priority: 100
+
+Package: proxyrun proxyrun-gui
+Pin: release o=Proxyrun
+Pin-Priority: 500
