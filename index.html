@@ -16,7 +16,7 @@
 @media(max-width:700px){.wrap{padding:0 22px}.hero{padding:50px 0 65px}.hero .logo{font-size:29px}.hero .brand-mark{width:38px;height:38px}.hero h1{font-size:clamp(69px,13vw,91px);margin:34px 0 40px}.actions{flex-direction:column;align-items:center;gap:13px}.button{width:290px;min-height:65px;font-size:18px;border-radius:15px;padding:0 18px;gap:10px;white-space:nowrap}.button .icon{flex-shrink:0}.network-section{padding:10px 0 40px}.board{height:680px}.app{width:140px;padding:5px;border-radius:16px}.app-handle{gap:8px;padding:9px 6px}.app-handle strong{font-size:15px}.app-icon{width:29px;height:29px;border-radius:8px}.app-icon .icon{width:20px;height:20px}.profile{width:130px;height:77px;gap:8px;border-radius:18px}.profile strong{font-size:16px}.profile .icon{width:22px;height:22px}.internet{width:60px;height:60px;top:92%;left:50%;box-shadow:0 0 0 8px #fcfafb}.internet .icon{width:32px;height:32px}.features{grid-template-columns:1fr;padding:40px 0 65px;gap:18px}.feature{padding:28px}.feature h2{font-size:25px}.feature p{font-size:17px}.feature>.icon{margin-bottom:22px}footer{align-items:start;gap:16px}footer nav{flex-wrap:wrap;justify-content:end;gap:16px;max-width:160px;font-size:12px}footer p{font-size:10px;line-height:1.6}}
 @media(max-width:360px){.wrap{padding:0 16px}.hero h1{font-size:64px}.button{width:270px;font-size:17px}.app{width:127px}.profile{width:115px}.profile strong{font-size:15px}.profile .icon{width:20px}.app-handle{gap:6px}.app-handle strong{font-size:14px}}
 /* The arrows themselves are controls, with generous invisible hit areas. */
-.route-base{stroke:currentColor;opacity:.35}.route-packet{stroke:currentColor}.route-hit{fill:none;stroke:transparent;stroke-width:22;pointer-events:stroke;cursor:grab;touch-action:none}.route-hit:hover + .route-base{opacity:.8;stroke-width:3}.route-end{position:absolute;transform:translate(-50%,-50%);width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:#fcfafb;color:var(--pink);padding:8px;z-index:4;cursor:grab;touch-action:none;transition:box-shadow .15s,background .15s}.route-end .icon{width:24px;height:24px;pointer-events:none}.route-end:hover,.route-end.active,.route-end:focus-visible{background:#fce8ef;box-shadow:0 0 0 4px #e47f9320}.route-end.dragging{cursor:grabbing;background:#f7d5e1;box-shadow:0 0 0 7px #e47f9325}.app-handle{padding:12px 10px}.profile[data-profile="p2"]{background:#f9eaf2;border-color:#d8a6c2}.profile[data-profile="p2"] .icon{color:#b5779e}.app-icon{background:transparent}.app-icon .icon{width:30px;height:30px}.profile strong{white-space:nowrap}
+.route-base{stroke:currentColor;opacity:.35}.route-packet{stroke:currentColor}.route-hit{fill:none;stroke:transparent;stroke-width:22;pointer-events:stroke;cursor:grab;touch-action:none}.route-hit:hover + .route-base{opacity:.8;stroke-width:3}.route-end{position:absolute;transform:translate(-50%,-50%);width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:var(--pink);padding:8px;z-index:4;cursor:grab;touch-action:none;transition:box-shadow .15s,background .15s}.route-end .icon{width:24px;height:24px;pointer-events:none}.route-end:hover,.route-end:focus-visible{background:#e47f9314;box-shadow:0 0 0 3px #e47f9314}.route-end.active .icon{stroke-width:2.4}.route-end.dragging{cursor:grabbing;background:transparent;box-shadow:none}.route-end.dragging .icon{stroke-width:2.5}.reconnecting .profile{border-style:dashed}.reconnecting .profile.drop-target{border-style:solid;background:#f8dce7;box-shadow:0 0 0 8px #e47f9325}.app-handle{padding:12px 10px}.profile[data-profile="p2"]{background:#f9eaf2;border-color:#d8a6c2}.profile[data-profile="p2"] .icon{color:#b5779e}.app-icon{background:transparent}.app-icon .icon{width:30px;height:30px}.profile strong{white-space:nowrap}
 @media(max-width:700px){.app{width:132px}.app-handle{padding:9px 5px;gap:7px}.app-handle strong{font-size:14px}.app-icon{width:27px}.app-icon .icon{width:25px;height:25px}.profile{width:120px;height:112px;gap:7px;flex-direction:column}.profile strong{font-size:16px}.route-end{width:34px;height:34px;padding:7px}.route-end .icon{width:20px;height:20px}.internet{top:94%}}
 @media(max-width:360px){.app{width:115px}.app-handle{gap:5px}.app-handle strong{font-size:13px}.app-icon{width:23px}.app-icon .icon{width:23px}.profile{width:105px}.route-end{width:30px;height:30px;padding:5px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.route-packet{stroke-dasharray:none;opacity:.5}}
@@ -114,7 +114,7 @@
     const handle = document.createElement('button');
     handle.className = 'route-end';
     handle.dataset.app = app.dataset.app;
-    handle.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>';
+    handle.innerHTML = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m8 5 7 7-7 7"/></svg>';
     board.append(handle);
     arrowHandles.set(app, handle);
   });
@@ -144,7 +144,7 @@
       const siblings = apps.filter(a => a.dataset.profile === app.dataset.profile);
       const destination = point(proxy, 'left');
       // Separate the arrow tips so every connection remains individually grabbable.
-      destination.x -= narrow.matches ? 20 : 27;
+      destination.x -= 9;
       destination.y += (siblings.indexOf(app) - (siblings.length-1)/2) * 34;
       if (wire && wire.app === app && wire.moved) Object.assign(destination, wire.point);
       connect(point(app, 'right'), destination, app.dataset.profile, app);
@@ -181,7 +181,7 @@
     app.dataset.profile = profile;
     arrowHandles.get(app).setAttribute('aria-label', `Reconnect ${app.querySelector('strong').textContent}: ${proxyName(profile)}`);
     select(app);
-    scheduleDraw();
+    draw();
     announcement.textContent = `${app.querySelector('strong').textContent} → ${proxyName(profile)}`;
   }
   function hit(node, event) {
@@ -263,6 +263,30 @@
     select(app);
     wire = {app, id: event.pointerId, capture, x: event.clientX, y: event.clientY, moved: false};
     capture.setPointerCapture(event.pointerId);
+    board.classList.add('reconnecting');
+  }
+  function wireTarget(event) {
+    // Accept the entire proxy, its connection tips and a forgiving edge zone.
+    const direct = profiles.find(p => hit(p, event));
+    if (direct) return direct;
+    for (const [app, handle] of arrowHandles) {
+      if (wire && app === wire.app) continue;
+      const r = handle.getBoundingClientRect();
+      if (event.clientX >= r.left-10 && event.clientX <= r.right+10 && event.clientY >= r.top-10 && event.clientY <= r.bottom+10) {
+        return profiles.find(p => p.dataset.profile === app.dataset.profile);
+      }
+    }
+    let nearest = null, distance = Infinity;
+    for (const proxy of profiles) {
+      const r = proxy.getBoundingClientRect();
+      const dx = Math.max(r.left-event.clientX, 0, event.clientX-r.right);
+      const dy = Math.max(r.top-event.clientY, 0, event.clientY-r.bottom);
+      if (dx <= 40 && dy <= 24 && Math.hypot(dx,dy) < distance) {
+        nearest = proxy;
+        distance = Math.hypot(dx,dy);
+      }
+    }
+    return nearest;
   }
   function moveWire(event) {
     if (!wire || wire.id !== event.pointerId) return;
@@ -271,17 +295,17 @@
     wire.moved = true;
     wire.point = {x: Math.max(18, Math.min(b.width-18, event.clientX-b.left)), y: Math.max(18, Math.min(b.height-18, event.clientY-b.top))};
     arrowHandles.get(wire.app).classList.add('dragging');
-    profiles.forEach(p => p.classList.toggle('drop-target', hit(p, event)));
+    const target = wireTarget(event);
+    profiles.forEach(p => p.classList.toggle('drop-target', p === target));
     scheduleDraw();
   }
   function finishWire(event, commit) {
     if (!wire || (event && event.pointerId !== wire.id)) return;
     const previous = wire;
+    const target = commit && previous.moved ? wireTarget(event) : null;
     wire = null;
-    if (commit && previous.moved) {
-      const target = profiles.find(p => hit(p, event));
-      if (target) assign(previous.app, target.dataset.profile);
-    }
+    board.classList.remove('reconnecting');
+    if (target) assign(previous.app, target.dataset.profile);
     arrowHandles.get(previous.app).classList.remove('dragging');
     profiles.forEach(p => p.classList.remove('drop-target'));
     if (previous.capture.hasPointerCapture(previous.id)) previous.capture.releasePointerCapture(previous.id);
