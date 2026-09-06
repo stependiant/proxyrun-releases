@@ -4,11 +4,13 @@ Run applications through your own HTTP, HTTPS or SOCKS5 proxy.
 All current features are free: CLI, desktop UI, profiles and Auto proxy.
 No account is required. Future proxy purchases or subscriptions will be optional.
 
-The first beta is in preparation. WinGet and APT are not available yet.
+**0.1.0-beta.1 is available for Windows x64 and Ubuntu 24.04 amd64 / WSL 2.**
+Download installers from Releases or use the signed APT repository. WinGet is not
+available yet. This beta's Windows installer is unsigned.
 
 ## Download
 
-The following installers will appear in [Releases](https://github.com/stependiant/proxyrun-releases/releases) when the beta is ready:
+Download from [Releases](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.1):
 
 | Platform | File | Includes |
 | --- | --- | --- |
@@ -25,6 +27,8 @@ applications can use ordinary system routing; there is no persistent system kill
 
 Application source is private. This repository contains downloads and documentation.
 [Third-party licenses and sources](https://stependiant.github.io/proxyrun-releases/third-party/0.1.0-beta.1/proxyrun-third-party-0.1.0-beta.1.tar.gz)
-will be available when the release is published; they retain their own licenses.
+are provided separately and retain their own licenses. The current beta includes
+the original MIT license for Proxyrun; proprietary freeware terms have not been
+applied to these installers.
 
 Contact: rodionmasalov34@gmail.com. Do not include proxy passwords or tokens in issues.

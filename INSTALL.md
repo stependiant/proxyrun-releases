@@ -1,12 +1,13 @@
-# Installation — instructions prepared for the first beta
+# Install Proxyrun
 
-The first beta is not published yet. WinGet and APT commands below become usable
-only after the corresponding channel is announced as available.
+Beta 0.1.0-beta.1 is available for Windows x64 and Ubuntu 24.04 amd64, including
+Ubuntu under WSL 2. Installers and the signed APT repository are available.
+WinGet submission is still pending.
 
 ## Windows x64
 
 Download the official `Proxyrun-Windows-x64-Setup.exe` from this repository's Releases and double-click
-it. The installer includes CLI, GUI and capture components. Windows can request
+it. This beta installer is unsigned. It includes CLI, GUI and capture components. Windows can request
 administrator authorization for the capture service. Launch Proxyrun from Start;
 open a new terminal to use `prun` or `proxyrun`.
 
@@ -32,11 +33,11 @@ sudo apt install ./proxyrun_0.1.0-beta.1_amd64.deb ./proxyrun-gui_0.1.0-beta.1_a
 
 For CLI only, download and install just `proxyrun_0.1.0-beta.1_amd64.deb`.
 
-Once the signed APT repository is published, add its dedicated public key and
+Add the signed APT repository using its dedicated public key and
 source, then install `proxyrun-gui`. It depends on the CLI package `proxyrun`.
 The repository supplies only these packages. It does not replace OS libraries.
 
-After publication, run this once to add the repository. The public signing-key
+Run this once to add the repository. The public signing-key
 fingerprint is `EC252089E3F4AE497CC0C0483B3CAEC447295DA7`.
 
 ```bash

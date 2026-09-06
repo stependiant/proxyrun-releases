@@ -1,11 +1,6 @@
 name: Deploy Proxyrun website
 on:
   workflow_dispatch:
-    inputs:
-      include_packages:
-        description: Publish reviewed APT packages and third-party sources too
-        type: boolean
-        default: false
 permissions:
   contents: read
   pages: write
@@ -21,32 +16,28 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Stage the website
+        with:
+          persist-credentials: false
+      - name: Read published APT and third-party data
+        uses: actions/checkout@v4
+        with:
+          ref: website-data
+          path: published-data
+          persist-credentials: false
+      - name: Stage the public site
         run: |
+          test -f published-data/apt/dists/noble/InRelease
+          test -f published-data/third-party/0.1.0-beta.1/proxyrun-third-party-0.1.0-beta.1.tar.gz
           mkdir site
           cp index.html site/index.html
-      - name: Download reviewed support files from the private repository
-        if: inputs.include_packages
-        env:
-          GH_TOKEN: ${{ secrets.PROXYRUN_SUPPORT_READ_TOKEN }}
-          GH_REPO: stependiant/proxyrun
-        run: |
-          if [ -z "$GH_TOKEN" ]; then
-            echo "::error::Configure PROXYRUN_SUPPORT_READ_TOKEN with Contents: read access to stependiant/proxyrun before deploying Pages."
-            exit 1
-          fi
-          gh release download distribution-v0.1.0-beta.1 --pattern proxyrun-apt-noble-amd64.tar.gz --pattern proxyrun-third-party-0.1.0-beta.1.tar.gz --pattern SHA256SUMS --dir download
-          cd download
-          awk '$2 == "proxyrun-apt-noble-amd64.tar.gz" { print }' SHA256SUMS > apt.sha256
-          test "$(wc -l < apt.sha256)" -eq 1
-          sha256sum --check apt.sha256
-          awk '$2 == "proxyrun-third-party-0.1.0-beta.1.tar.gz" { print }' SHA256SUMS > sources.sha256
+          cp published-data/SHA256SUMS site/SHA256SUMS
+          cp -R published-data/apt published-data/third-party site/
+          gpgv --keyring "$PWD/site/apt/proxyrun-archive-keyring.gpg" site/apt/dists/noble/InRelease
+          cd site/third-party/0.1.0-beta.1
+          awk '$2 == "proxyrun-third-party-0.1.0-beta.1.tar.gz" { print }' ../../SHA256SUMS > sources.sha256
           test "$(wc -l < sources.sha256)" -eq 1
           sha256sum --check sources.sha256
-          mkdir -p ../site/third-party/0.1.0-beta.1
-          cp proxyrun-third-party-0.1.0-beta.1.tar.gz ../site/third-party/0.1.0-beta.1/
-          tar -xzf proxyrun-apt-noble-amd64.tar.gz -C ../site --no-same-owner
-          test -f ../site/apt/dists/noble/InRelease
+          rm sources.sha256
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
