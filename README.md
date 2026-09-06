@@ -1,31 +1,30 @@
 # Proxyrun
 
-Free desktop and command-line application for running applications through your
-own HTTP, HTTPS or SOCKS5 proxy. Profiles, per-application proxy selection and
-Auto proxy are free. No account is required for your own proxies.
+Run applications through your own HTTP, HTTPS or SOCKS5 proxy.
+All current features are free: CLI, desktop UI, profiles and Auto proxy.
+No account is required. Future proxy purchases or subscriptions will be optional.
 
-This repository contains official downloads, documentation and issue tracking.
-It does not contain the proprietary application source. Third-party components
-retain their licenses and corresponding-source distribution information.
+The first beta is in preparation. WinGet and APT are not available yet.
 
-The first beta is being prepared for Windows x64 and Ubuntu 24.04 amd64, including
-Ubuntu 24.04 under WSL 2. Packages are not available through WinGet or APT yet.
-Only download versions marked as published releases; availability is announced
-here after package validation.
+## Download
 
-On Windows the installer includes both CLI (`proxyrun` / `prun`) and GUI. It
-prepares the capture service with Windows administrator authorization.
-On Linux `proxyrun-gui` depends on `proxyrun`; install `proxyrun` alone for CLI use.
-WSL GUI needs WSLg. Linux/WSL capture targets Linux applications; Windows
-applications need the Windows version.
+Choose from the three installers in [Releases](https://github.com/stependiant/proxyrun-releases/releases):
 
-Auto proxy can change system routes and DNS, can require administrator approval,
-and has no persistent system kill switch. If system capture stops, applications
-can use ordinary system routing. Proxy compatibility depends on the provider.
+| Platform | File | Includes |
+| --- | --- | --- |
+| Windows x64 | `Proxyrun-Windows-x64-Setup.exe` | Desktop UI + CLI; automatic capture-service setup |
+| Ubuntu 24.04 / WSL 2, amd64 | `proxyrun_<version>_amd64.deb` | CLI |
+| Ubuntu 24.04 / WSL 2, amd64 | `proxyrun-gui_<version>_amd64.deb` | Desktop UI; also requires the CLI package |
 
-Future in-app proxy purchases or subscriptions will be optional; existing local
-features and manual use of your own proxy remain free.
+[Installation instructions](INSTALL.md) · [Report a bug](https://github.com/stependiant/proxyrun-releases/issues)
 
-Report ordinary bugs in Issues after removing passwords, tokens and proxy URLs
-with credentials. Report sensitive vulnerabilities privately to
-rodionmasalov34@gmail.com.
+WSL packages run Linux applications. The UI requires WSLg.
+Use the Windows installer for Windows applications.
+Auto proxy may require administrator approval. If system capture stops,
+applications can use ordinary system routing; there is no persistent system kill switch.
+
+Application source is private. This repository contains downloads and documentation.
+[Third-party licenses and sources](https://stependiant.github.io/proxyrun-releases/third-party/0.1.0-beta.1/proxyrun-third-party-0.1.0-beta.1.tar.gz)
+will be available when the release is published; they retain their own licenses.
+
+Contact: rodionmasalov34@gmail.com. Do not include proxy passwords or tokens in issues.

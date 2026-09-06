@@ -21,12 +21,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release download v0.1.0-beta.1 --pattern proxyrun-apt-noble-amd64.tar.gz --pattern SHA256SUMS --dir download
+          gh release download distribution-v0.1.0-beta.1 --pattern proxyrun-apt-noble-amd64.tar.gz --pattern proxyrun-third-party-0.1.0-beta.1.tar.gz --pattern SHA256SUMS --dir download
           cd download
           awk '$2 == "proxyrun-apt-noble-amd64.tar.gz" { print }' SHA256SUMS > apt.sha256
           test "$(wc -l < apt.sha256)" -eq 1
           sha256sum --check apt.sha256
-          mkdir ../site
+          awk '$2 == "proxyrun-third-party-0.1.0-beta.1.tar.gz" { print }' SHA256SUMS > sources.sha256
+          test "$(wc -l < sources.sha256)" -eq 1
+          sha256sum --check sources.sha256
+          mkdir -p ../site/third-party/0.1.0-beta.1
+          cp proxyrun-third-party-0.1.0-beta.1.tar.gz ../site/third-party/0.1.0-beta.1/
           cp ../index.html ../site/index.html
           tar -xzf proxyrun-apt-noble-amd64.tar.gz -C ../site --no-same-owner
           test -f ../site/apt/dists/noble/InRelease

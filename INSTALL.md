@@ -5,7 +5,7 @@ only after the corresponding channel is announced as available.
 
 ## Windows x64
 
-Download the official `*-setup.exe` from this repository's Releases and double-click
+Download the official `Proxyrun-Windows-x64-Setup.exe` from this repository's Releases and double-click
 it. The installer includes CLI, GUI and capture components. Windows can request
 administrator authorization for the capture service. Launch Proxyrun from Start;
 open a new terminal to use `prun` or `proxyrun`.
@@ -22,6 +22,15 @@ uninstall that preview with its `install.cmd -Uninstall` before installing the n
 package. Profiles are preserved. Do not remove profile files manually.
 
 ## Ubuntu 24.04 amd64 / Ubuntu 24.04 in WSL 2
+
+For a manual installation, download both `.deb` files from the same release, open
+a terminal in the download directory and run:
+
+```bash
+sudo apt install ./proxyrun_0.1.0-beta.1_amd64.deb ./proxyrun-gui_0.1.0-beta.1_amd64.deb
+```
+
+For CLI only, download and install just `proxyrun_0.1.0-beta.1_amd64.deb`.
 
 Once the signed APT repository is published, add its dedicated public key and
 source, then install `proxyrun-gui`. It depends on the CLI package `proxyrun`.
