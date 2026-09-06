@@ -8,7 +8,7 @@ The first beta is in preparation. WinGet and APT are not available yet.
 
 ## Download
 
-Choose from the three installers in [Releases](https://github.com/stependiant/proxyrun-releases/releases):
+The following installers will appear in [Releases](https://github.com/stependiant/proxyrun-releases/releases) when the beta is ready:
 
 | Platform | File | Includes |
 | --- | --- | --- |

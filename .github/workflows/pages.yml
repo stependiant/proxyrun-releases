@@ -1,6 +1,11 @@
-name: Deploy download page and signed APT repository
+name: Deploy Proxyrun website
 on:
   workflow_dispatch:
+    inputs:
+      include_packages:
+        description: Publish reviewed APT packages and third-party sources too
+        type: boolean
+        default: false
 permissions:
   contents: read
   pages: write
@@ -16,7 +21,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Stage the website
+        run: |
+          mkdir site
+          cp index.html site/index.html
       - name: Download reviewed support files from the private repository
+        if: inputs.include_packages
         env:
           GH_TOKEN: ${{ secrets.PROXYRUN_SUPPORT_READ_TOKEN }}
           GH_REPO: stependiant/proxyrun
@@ -35,7 +45,6 @@ jobs:
           sha256sum --check sources.sha256
           mkdir -p ../site/third-party/0.1.0-beta.1
           cp proxyrun-third-party-0.1.0-beta.1.tar.gz ../site/third-party/0.1.0-beta.1/
-          cp ../index.html ../site/index.html
           tar -xzf proxyrun-apt-noble-amd64.tar.gz -C ../site --no-same-owner
           test -f ../site/apt/dists/noble/InRelease
       - uses: actions/configure-pages@v5
