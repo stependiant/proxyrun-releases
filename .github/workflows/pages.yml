@@ -31,6 +31,9 @@ jobs:
           mkdir site
           cp index.html site/index.html
           cp -R wiki site/wiki
+          cp sitemap.xml site/sitemap.xml
+          cp indexnow.txt site/indexnow.txt
+          cp -R assets site/assets
           cp published-data/SHA256SUMS site/SHA256SUMS
           cp -R published-data/apt published-data/third-party site/
           gpgv --keyring "$PWD/site/apt/proxyrun-archive-keyring.gpg" site/apt/dists/noble/InRelease
