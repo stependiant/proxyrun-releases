@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#fcfafb">
-<meta name="description" content="Your apps. Your proxy. Proxyrun is a free desktop and command-line app that puts you in control of your applications’ proxy profiles.">
+<meta name="description" content="Your apps. Your proxy. Proxyrun for Windows and Linux.">
 <title>Proxyrun — Your apps. Your proxy.</title>
 <style>
-:root{--pink:#e47f93;--ink:#29242a;--muted:#827880;--line:#eee6e9;--paper:#fcfafb;--rose:#b9546d;--soft:#fbedf1;--plum:#987eaa;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}button,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--rose);outline-offset:5px}button:disabled{cursor:default}::selection{background:#f3c5d0}svg{display:block}.symbols{position:absolute;width:0;height:0;overflow:hidden}.icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.wrap{max-width:1256px;margin:auto;padding:0 44px}.header{height:100px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.logo{display:inline-flex;gap:11px;align-items:center;font-size:25px;font-weight:730;letter-spacing:-1.1px}.logo-dot{color:var(--pink)}.brand-mark{width:33px;height:33px;color:var(--rose);background:var(--soft);border-radius:11px;display:grid;place-items:center}.header nav{display:flex;gap:30px;align-items:center;font-size:13px;color:#746872}.header nav a:hover,footer a:hover{color:var(--rose)}.nav-download{border:1px solid #dfd3d9;border-radius:9px;padding:10px 15px;color:var(--ink)}.hero{display:grid;grid-template-columns:.94fr 1.16fr;gap:32px;align-items:center;min-height:670px;padding:67px 0 66px}.eyebrow{display:flex;align-items:center;gap:9px;font-size:10px;font-weight:650;letter-spacing:2px;text-transform:uppercase;color:#9c6878}.little-dot{width:6px;height:6px;background:var(--pink);border-radius:50%;box-shadow:0 0 0 4px #f8e9ed}.hero h1{font-size:clamp(54px,5.5vw,76px);line-height:1.07;letter-spacing:-4.5px;font-weight:650;margin:26px 0 24px}.hero h1 span{color:var(--pink)}.hero-copy>p{font-size:16px;line-height:1.85;max-width:350px;color:#857982;margin:0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:31px 0 15px}.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:47px;padding:0 17px;border:1px solid #e7dce1;border-radius:10px;font-size:12px;font-weight:600;background:#fff;transition:transform .18s,box-shadow .18s,background .18s}.button:hover{transform:translateY(-2px);box-shadow:0 5px 16px #35232e0c}.button.primary{background:var(--pink);border-color:var(--pink);color:#40202b}.button.primary:hover{background:#e98d9f}.button .icon{width:17px;height:17px}.hero-copy .availability{font-size:11px;line-height:1.7;color:#9b8b94;max-width:390px}.hero-copy .availability a{text-decoration:underline;text-underline-offset:3px}.hero-meta{display:flex;gap:13px;align-items:center;margin-top:27px;font-size:10px;color:#94868f}.hero-meta i{width:3px;height:3px;background:#cdbbc4;border-radius:50%}
-/* The route board is a local, interactive illustration. */
-.demo{position:relative;min-width:0}.board-shell{position:relative;border:1px solid #efdee5;border-radius:22px;background:linear-gradient(135deg,#fffefd,#fff9fb);box-shadow:0 24px 70px -38px #bc839b50;overflow:hidden}.board-top{height:47px;display:flex;align-items:center;justify-content:space-between;margin:0 21px;border-bottom:1px solid #f2e7ec;font-size:9px;letter-spacing:1.5px;color:#a5919e}.board-title{display:flex;gap:7px;align-items:center}.board-title .icon{height:13px;width:13px}.demo-label{font-size:8px;letter-spacing:1px;border:1px solid #efdee5;padding:4px 6px;border-radius:4px;background:#fff}.board{height:372px;position:relative;isolation:isolate;background-image:radial-gradient(#e9dce3 .8px,transparent .8px);background-size:18px 18px;touch-action:pan-y}.board:before{content:"";position:absolute;inset:5% 6%;background:radial-gradient(ellipse at center,#f9e5ed85,transparent 65%);z-index:-1}.routes{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.route-base{fill:none;stroke:#ebdbe2;stroke-width:1.5}.route-packet{fill:none;stroke:var(--pink);stroke-width:3;stroke-linecap:round;stroke-dasharray:2 78;animation:traffic 6s linear infinite}.route-packet.secondary{stroke:var(--plum)}@keyframes traffic{to{stroke-dashoffset:-240}}.column-label{position:absolute;top:23px;font-size:8px;letter-spacing:1.4px;color:#ab96a3}.apps-label{left:6%}.proxy-label{left:43%;display:flex;gap:6px;align-items:center;color:#a65e75;letter-spacing:.1px;font-weight:650;font-size:12px}.proxy-label .icon{width:16px;height:16px}.net-label{right:5%}.app{position:absolute;left:4%;width:28%;height:57px;transform:translateY(-50%);display:flex;align-items:center;gap:9px;text-align:left;padding:9px;border-radius:11px;border:1px solid #e9e0e5;background:#fff;box-shadow:0 3px 8px #3d203207;z-index:3;touch-action:none;user-select:none;transition:border-color .2s,box-shadow .2s}.app[data-app="browser"]{top:29%}.app[data-app="terminal"]{top:52%}.app[data-app="music"]{top:75%}.app:hover,.app[aria-pressed="true"]{border-color:#df9bac;box-shadow:0 0 0 3px #f9eaf0}.app-icon{display:grid;place-items:center;width:29px;height:29px;flex-shrink:0;border:1px solid #eee8ed;border-radius:8px;color:#8c7787;background:#faf7f9}.app-icon .icon{width:17px;height:17px}.app strong{font-size:10px;display:block;font-weight:600;margin-bottom:4px}.app small{display:block;font-size:8px;color:#aa8797;white-space:nowrap}.app[data-profile="work"] small{color:#9982aa}.drag-handle{margin-left:auto;color:#c3b4bd;font-size:14px;letter-spacing:-2px}.profile{position:absolute;left:43%;width:29%;height:73px;transform:translateY(-50%);background:#fff8fb;border:1px solid #e6a9bc;border-radius:12px;display:flex;align-items:center;padding:10px;gap:9px;text-align:left;z-index:2;box-shadow:0 5px 20px #b6577710;transition:box-shadow .2s,transform .2s}.profile[data-profile="personal"]{top:35%}.profile[data-profile="work"]{top:69%;border-color:#d8c7e1;background:#fbf8fd}.profile-icon{width:29px;height:32px;display:grid;place-items:center;flex-shrink:0;color:var(--rose);background:#f9e8ef;border-radius:8px}.profile[data-profile="work"] .profile-icon{background:#f0eaf5;color:#9274a6}.profile-icon .icon{width:17px;height:17px}.profile strong{display:block;font-size:11px;font-weight:600;margin-bottom:5px}.profile small{display:block;color:#b28e9e;font-size:8px}.profile[data-profile="work"] small{color:#aa96b7}.profile:hover,.profile.drop-target{box-shadow:0 0 0 5px #e47f9320;transform:translateY(-50%) scale(1.025)}.profile[data-profile="work"].drop-target{box-shadow:0 0 0 5px #987eaa20}.internet{position:absolute;right:4%;top:52%;transform:translateY(-50%);width:14%;aspect-ratio:1;border:1px solid #ebdce4;border-radius:50%;background:#fff;display:grid;place-items:center;color:#b292a3;box-shadow:0 0 0 7px #fff9fc}.internet .icon{width:28px;height:28px;stroke-width:1}.internet:after{content:"Internet";position:absolute;top:calc(100% + 15px);font-size:8px;color:#a5909e}.board-bottom{border-top:1px solid #f2e7ec;margin:0 21px;height:41px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:8px;color:#a3919d}.status{display:flex;gap:6px;align-items:center}.status:before{content:"";height:4px;width:4px;border-radius:50%;background:var(--pink)}.reset{border:0;background:transparent;padding:8px 0;color:#a3919d;font-size:9px;display:flex;gap:5px;align-items:center}.reset .icon{width:11px;height:11px}.demo-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 7px 0;font-size:10px;color:#a0909b}.demo-caption p{margin:0;display:flex;align-items:center;gap:6px;line-height:1.6}.demo-caption .icon{width:13px;height:13px;color:#bc8398;flex-shrink:0}.motion-toggle{border:0;background:transparent;color:#a0909b;font-size:9px;padding:7px 0;white-space:nowrap}.motion-toggle:hover,.reset:hover{color:var(--rose)}.drag-ghost{position:fixed;z-index:20;width:145px;opacity:.94;pointer-events:none;transform:rotate(-5deg);border-color:var(--pink);box-shadow:0 12px 24px #73314f25}.dragging{opacity:.4}.paused .route-packet{animation-play-state:paused}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.ribbon{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;color:#92838d;font-size:11px}.protocols{display:flex;gap:19px;font-family:ui-monospace,Consolas,monospace;font-size:10px;letter-spacing:.5px;color:#99818f}.ribbon-note{display:flex;align-items:center;gap:7px}.ribbon-note .icon{width:14px;height:14px;color:#b78d9f}.section{padding:80px 0}.section-heading{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:34px}.section-heading h2{font-size:32px;font-weight:550;letter-spacing:-1.3px;margin:13px 0 0}.section-heading>p{max-width:260px;font-size:12px;line-height:1.8;color:#92858d;margin:0}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:#fff;border:1px solid var(--line);border-radius:15px;padding:26px;position:relative;overflow:hidden}.feature-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}.feature-head>.icon{color:#b9798f;width:23px;height:23px}.feature-head>span{color:#c5b5bd;font-family:ui-monospace,monospace;font-size:10px}.feature h3{font-size:15px;font-weight:600;letter-spacing:-.25px;margin:0 0 10px}.feature p{color:#95878f;font-size:12px;line-height:1.85;margin:0}.feature-tag{margin-top:24px;display:inline-flex;align-items:center;gap:7px;font-size:9px;color:#b08093;background:#fbf2f5;border:1px solid #f3e8ed;border-radius:5px;padding:6px 8px}.feature-tag .icon{width:11px;height:11px}.install-section{padding-top:0}.install-card{display:grid;grid-template-columns:1fr 1fr;gap:50px;border:1px solid #eedee6;background:linear-gradient(115deg,#fcf2f6,#fffafb);border-radius:18px;padding:39px}.install-card h2{font-size:28px;letter-spacing:-1px;font-weight:550;margin:16px 0}.install-card p{font-size:12px;color:#99848f;line-height:1.9;margin:0}.install-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.install-links .button{min-height:41px;font-size:11px}.install-options{display:flex;flex-direction:column;gap:12px}.install-options details{border:1px solid #eddee5;border-radius:10px;background:#ffffffc7;overflow:hidden}.install-options summary{cursor:pointer;padding:16px;font-size:12px;list-style:none;display:flex;align-items:center;justify-content:space-between}.install-options summary::-webkit-details-marker{display:none}.install-options summary:after{content:"+";font-size:17px;color:#b08b9d}.install-options details[open] summary:after{content:"−"}.install-options .details-body{padding:0 16px 16px;font-size:11px;color:#917986;line-height:1.8}.details-body a{text-decoration:underline;text-underline-offset:3px}.install-options pre{font:10px/1.7 ui-monospace,Consolas,monospace;background:#faf5f7;border-radius:6px;padding:12px;overflow:auto;color:#826373;white-space:pre-wrap;overflow-wrap:anywhere}.footnote{font-size:10px!important;margin-top:18px!important;color:#ad96a2!important}footer{padding:29px 0 35px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:25px}footer .logo{font-size:18px}footer .brand-mark{width:25px;height:25px;border-radius:8px}footer .icon{width:16px;height:16px}footer p{font-size:9px;color:#ac9aa5;margin:10px 0 0}footer nav{display:flex;gap:23px;font-size:10px;color:#9f8b97}noscript p{font-size:11px;line-height:1.6;color:var(--rose);padding:10px}
-@media(min-width:1440px){.hero{min-height:700px}.board{height:400px}}@media(max-width:1050px){.wrap{padding:0 30px}.hero{gap:22px}.hero h1{font-size:60px}.actions{flex-direction:column;align-items:flex-start}.actions .button{min-width:195px}.app{gap:6px;padding:7px}.drag-handle{display:none}.profile{gap:6px;padding:7px}.profile-icon{width:23px}.app-icon{width:24px}.app strong{font-size:9px}.profile strong{font-size:10px}.profile small{font-size:7px}}@media(max-width:780px){.wrap{padding:0 25px}.header{height:80px}.header nav{gap:20px}.header nav .how-link{display:none}.hero{grid-template-columns:1fr;gap:44px;padding:50px 0 42px}.hero h1{font-size:65px;margin-top:22px}.hero-copy>p{max-width:410px}.actions{flex-direction:row;align-items:stretch}.actions .button{min-width:0}.hero-meta{margin-top:21px}.demo{max-width:600px;width:100%;margin:auto}.board{height:380px}.app{padding:9px;gap:9px}.app strong{font-size:11px}.app-icon{width:29px}.profile{padding:10px;gap:9px}.profile strong{font-size:12px}.profile small{font-size:9px}.profile-icon{width:29px}.ribbon{flex-wrap:wrap;gap:15px}.ribbon>span:first-child{flex-basis:100%}.section{padding:55px 0}.section-heading{display:block}.section-heading>p{margin-top:16px;max-width:340px}.features{grid-template-columns:1fr}.feature{padding:23px}.feature-head{margin-bottom:18px}.feature-tag{margin-top:17px}.install-section{padding-top:0}.install-card{grid-template-columns:1fr;gap:27px;padding:27px}footer{align-items:start}footer nav{gap:15px;flex-wrap:wrap;max-width:175px;justify-content:end}}@media(max-width:420px){.wrap{padding:0 19px}.header nav{gap:15px;font-size:11px}.logo{font-size:23px}.hero h1{font-size:57px;letter-spacing:-3.5px}.hero-copy>p{font-size:14px}.actions{gap:8px}.actions .button{font-size:10px;padding:0 12px;gap:7px}.hero-meta{font-size:9px}.board{height:331px}.board-top,.board-bottom{margin:0 12px}.board-top{font-size:8px}.app{height:53px;padding:6px;gap:6px;left:3%;width:30%}.app strong{font-size:9px}.app small{font-size:7px}.app-icon{width:22px;height:25px;border-radius:6px}.app-icon .icon{width:14px;height:14px}.profile{left:44%;width:29%;height:68px;padding:7px;gap:5px}.profile strong{font-size:9px}.profile small{font-size:7px}.profile-icon{width:21px;height:28px}.profile-icon .icon{width:14px;height:14px}.proxy-label{left:44%;font-size:10px;gap:4px}.proxy-label .icon{width:13px}.column-label{font-size:7px;letter-spacing:1px}.internet{right:3%;width:13%}.internet .icon{width:23px}.demo-caption{font-size:9px;gap:8px;margin-left:1px;margin-right:1px}.motion-toggle{font-size:8px}.ribbon{font-size:10px}.protocols{gap:12px;font-size:9px}.section-heading h2{font-size:28px}footer nav{font-size:9px}}
-/* Keep supporting copy readable against the pale surfaces. */
-.hero-copy>p,.feature p,.section-heading>p{color:#786c75}.hero-copy .availability,.hero-meta,.ribbon,.install-card p{color:#82717d}.feature-tag{color:#956277}.demo-caption,.motion-toggle,.board-bottom,.reset{color:#8d7382}.app small{color:#946476}.app[data-profile="work"] small{color:#846c97}.profile small{color:#97667c}.profile[data-profile="work"] small{color:#8a739b}.details-body{color:#79606f}.footnote{color:#927686!important}footer p,footer nav{color:#8a7482}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.route-packet{stroke-dasharray:none;opacity:.4}}
+:root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#29242a;background:#fcfafb;font-synthesis:none;--pink:#e47f93;--rose:#a94460;--plum:#9272a8;--line:#eee4e9}
+*{box-sizing:border-box}body{margin:0}a{color:inherit;text-decoration:none}button,select{font:inherit;color:inherit}button,a,select{-webkit-tap-highlight-color:transparent}button,select{cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--rose);outline-offset:5px}::selection{background:#f5c6d2}.symbols{position:absolute;width:0;height:0;overflow:hidden}.icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:block}.wrap{max-width:1280px;margin:auto;padding:0 48px}.logo{display:inline-flex;align-items:center;gap:12px;font-size:34px;font-weight:700;letter-spacing:-1.5px}.logo-dot{color:var(--pink)}.brand-mark{width:43px;height:43px;border-radius:13px;background:#fbedf1;color:var(--rose);display:grid;place-items:center}
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:65px 0 90px}.hero h1{font-size:clamp(82px,9.3vw,138px);font-weight:650;letter-spacing:-.065em;line-height:1.02;margin:42px 0 48px}.hero h1 span{color:var(--pink)}.actions{display:flex;justify-content:center;gap:18px}.button{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:72px;padding:0 30px;border:1px solid #e3d4dc;border-radius:17px;background:#fff;font-size:20px;font-weight:550;transition:background .2s,transform .2s}.button:hover{transform:translateY(-3px);background:#fff6f9}.button.primary{background:var(--pink);border-color:var(--pink);color:#392029}.button.primary:hover{background:#e98c9e}.button .icon{width:23px;height:23px}
+.network-section{padding:20px 0 80px}.board{height:660px;position:relative;isolation:isolate;touch-action:pan-y}.board:before{content:"";position:absolute;inset:-8% -4%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,#f9e5eea6,transparent 66%)}.routes{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.route-base{fill:none;stroke:#e4c9d5;stroke-width:2}.route-base.secondary{stroke:#d9cee2}.route-packet{fill:none;stroke:var(--pink);stroke-width:5;stroke-linecap:round;stroke-dasharray:2 84;animation:traffic 4.5s linear 1 forwards}.route-packet.secondary{stroke:var(--plum)}@keyframes traffic{to{stroke-dashoffset:-258}}.offscreen .route-packet{animation-play-state:paused}.node{position:absolute;transform:translate(-50%,-50%);z-index:2;user-select:none}.app{width:215px;background:#fff;border:1px solid #e7dce2;border-radius:20px;padding:8px;box-shadow:0 8px 35px #76344d08;transition:border-color .2s,box-shadow .2s}.app.selected{border-color:#dc8da3;box-shadow:0 0 0 4px #f6e1e9}.app-handle{display:flex;align-items:center;gap:14px;width:100%;padding:12px 10px;border:0;background:none;text-align:left;cursor:grab;touch-action:none;border-radius:12px}.app-handle strong{font-size:19px;font-weight:550}.app-icon{display:grid;place-items:center;width:37px;height:37px;background:#f8f2f5;border-radius:11px;color:#977888;flex-shrink:0}.profile-select{width:100%;border:0;border-top:1px solid #f1e6ec;background:#fff7fa;border-radius:0 0 12px 12px;padding:10px 12px;font-size:15px;color:#a44e6c;min-height:40px}.app[data-profile="work"] .profile-select{color:#806393;background:#faf7fc}.profile{width:200px;height:100px;display:flex;align-items:center;justify-content:center;gap:14px;background:#fceaf1;border:1px solid #e2a0b6;border-radius:23px;cursor:grab;touch-action:none;box-shadow:0 10px 40px #b45c7910;transition:box-shadow .2s,border-color .2s}.profile strong{font-size:21px;font-weight:550}.profile .icon{width:29px;height:29px;color:var(--rose)}.profile[data-profile="work"]{background:#f2edf8;border-color:#c9b6da}.profile[data-profile="work"] .icon{color:#9170a6}.profile.active{box-shadow:0 0 0 5px #e47f931a}.profile[data-profile="work"].active{box-shadow:0 0 0 5px #9272a819}.node.drop-target{box-shadow:0 0 0 8px #e47f932c;border-color:var(--pink)}.node.dragging{cursor:grabbing;z-index:5;box-shadow:0 16px 40px #75334b22}.node.dragging .app-handle{cursor:grabbing}.internet{position:absolute;left:89%;top:50%;transform:translate(-50%,-50%);width:104px;height:104px;display:grid;place-items:center;border-radius:50%;color:#ac8197;background:#fff;border:1px solid #ead7e1;box-shadow:0 0 0 12px #fcfafb}.internet .icon{width:49px;height:49px;stroke-width:1.15}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:30px 0 120px}.feature{padding:32px;border:1px solid var(--line);border-radius:23px;background:#fff}.feature>.icon{width:32px;height:32px;color:#bd738c;margin-bottom:28px}.feature h2{font-size:24px;line-height:1.25;letter-spacing:-.7px;font-weight:550;margin:0 0 17px}.feature p{color:#82717b;font-size:17px;line-height:1.75;margin:0}footer{border-top:1px solid var(--line);padding:32px 0;display:flex;align-items:center;justify-content:space-between;gap:25px}footer .logo{font-size:23px}footer .brand-mark{width:30px;height:30px;border-radius:9px}footer .icon{width:19px;height:19px}footer p{font-size:12px;color:#9c8492;margin:12px 0 0}footer nav{display:flex;gap:25px;font-size:14px;color:#8f7182}footer a:hover{color:var(--rose)}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:1000px){.wrap{padding:0 30px}.board{height:580px}.app{width:185px}.profile{width:165px;height:90px;gap:10px}.profile strong{font-size:19px}.internet{width:82px;height:82px}.internet .icon{width:40px;height:40px}.feature{padding:25px}.feature h2{font-size:22px}.feature p{font-size:16px}.features{gap:16px}}
+@media(max-width:700px){.wrap{padding:0 22px}.hero{padding:50px 0 65px}.hero .logo{font-size:29px}.hero .brand-mark{width:38px;height:38px}.hero h1{font-size:clamp(69px,13vw,91px);margin:34px 0 40px}.actions{flex-direction:column;align-items:center;gap:13px}.button{width:290px;min-height:65px;font-size:18px;border-radius:15px;padding:0 18px;gap:10px;white-space:nowrap}.button .icon{flex-shrink:0}.network-section{padding:10px 0 40px}.board{height:560px}.app{width:140px;padding:5px;border-radius:16px}.app-handle{gap:8px;padding:9px 6px}.app-handle strong{font-size:15px}.app-icon{width:29px;height:29px;border-radius:8px}.app-icon .icon{width:20px;height:20px}.profile-select{font-size:13px;padding:9px 7px}.profile{width:130px;height:77px;gap:8px;border-radius:18px}.profile strong{font-size:16px}.profile .icon{width:22px;height:22px}.internet{width:60px;height:60px;top:92%;left:50%;box-shadow:0 0 0 8px #fcfafb}.internet .icon{width:32px;height:32px}.features{grid-template-columns:1fr;padding:40px 0 65px;gap:18px}.feature{padding:28px}.feature h2{font-size:25px}.feature p{font-size:17px}.feature>.icon{margin-bottom:22px}footer{align-items:start;gap:16px}footer nav{flex-wrap:wrap;justify-content:end;gap:16px;max-width:160px;font-size:12px}footer p{font-size:10px;line-height:1.6}}
+@media(max-width:360px){.wrap{padding:0 16px}.hero h1{font-size:64px}.button{width:270px;font-size:17px}.app{width:127px}.profile{width:115px}.profile strong{font-size:15px}.profile .icon{width:20px}.app-handle{gap:6px}.app-handle strong{font-size:14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.route-packet{stroke-dasharray:none;opacity:.5}}
 </style>
 </head>
 <body>
@@ -34,77 +35,203 @@
 <symbol id="i-auto" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7z"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
 </defs></svg>
-<div class="wrap">
-<header class="header"><a class="logo" href="#" aria-label="Proxyrun home"><span class="brand-mark"><svg class="icon"><use href="#i-mark"/></svg></span><span>proxyrun<span class="logo-dot">.</span></span></a><nav aria-label="Main navigation"><a class="how-link" href="#how-it-works">How it works</a><a href="https://github.com/stependiant/proxyrun-releases">GitHub ↗</a><a class="nav-download" href="#install">Get Proxyrun</a></nav></header>
-<main>
-<section class="hero" aria-labelledby="hero-title">
-<div class="hero-copy"><div class="eyebrow"><span class="little-dot"></span>A little more control.</div><h1 id="hero-title">Your apps.<br>Your <span>proxy.</span></h1><p>A different route for every app.<br>Choose your proxies. Set your profiles.<br>Let Proxyrun take it from there.</p>
-<div class="actions"><a class="button primary" href="#windows-install"><svg class="icon" aria-hidden="true"><use href="#i-windows"/></svg>Download for Windows</a><a class="button" href="#linux-install"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>Install on Linux</a></div>
-<p class="availability">First beta coming soon. <a href="#install">Installation details</a></p>
-<div class="hero-meta"><span>Free to use</span><i></i><span>No account needed</span><i></i><span>CLI + desktop UI</span></div>
-</div>
-<div class="demo" aria-label="Interactive proxy routing demo">
-<div class="board-shell"><div class="board-top"><span class="board-title"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>YOUR LITTLE NETWORK</span><span class="demo-label">INTERACTIVE DEMO</span></div>
-<div class="board" id="route-board"><svg class="routes" id="routes" aria-hidden="true"></svg><span class="column-label apps-label">YOUR APPS</span><span class="column-label proxy-label"><svg class="icon" aria-hidden="true"><use href="#i-mark"/></svg>proxyrun.</span><span class="column-label net-label">THE WEB</span>
-<button class="app" data-app="browser" data-profile="personal" aria-pressed="true" aria-describedby="demo-instructions"><span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-browser"/></svg></span><span><strong>Browser</strong><small>Personal profile</small></span><span class="drag-handle" aria-hidden="true">⠿</span></button>
-<button class="app" data-app="terminal" data-profile="work" aria-pressed="false" aria-describedby="demo-instructions"><span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg></span><span><strong>Terminal</strong><small>Work profile</small></span><span class="drag-handle" aria-hidden="true">⠿</span></button>
-<button class="app" data-app="music" data-profile="personal" aria-pressed="false" aria-describedby="demo-instructions"><span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></span><span><strong>Music</strong><small>Personal profile</small></span><span class="drag-handle" aria-hidden="true">⠿</span></button>
-<button class="profile" data-profile="personal" aria-label="Route selected app through Personal profile"><span class="profile-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span><span><strong>Personal</strong><small><span data-count="personal">2</span> apps connected</small></span></button>
-<button class="profile" data-profile="work" aria-label="Route selected app through Work profile"><span class="profile-icon"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg></span><span><strong>Work</strong><small><span data-count="work">1</span> app connected</small></span></button>
-<div class="internet"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div></div>
-<div class="board-bottom"><span class="status" id="board-status">Browser selected · choose a profile</span><button class="reset" id="reset-demo" aria-label="Reset routing demo"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg>Reset</button></div></div>
-<div class="demo-caption"><p id="demo-instructions"><svg class="icon" aria-hidden="true"><use href="#i-cursor"/></svg>Drag an app to a profile. Or tap an app, then a profile.</p><button class="motion-toggle" id="motion-toggle" aria-pressed="false">Pause animation</button></div><p class="sr-only" role="status" id="demo-announcement"></p><noscript><p>This is an illustration of per-app profiles. Enable JavaScript to try changing the routes.</p></noscript>
+<div class="wrap"><main>
+<section class="hero" aria-labelledby="hero-title"><div>
+<a class="logo" href="#" aria-label="Proxyrun home"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-mark"/></svg></span><span>proxyrun<span class="logo-dot">.</span></span></a>
+<h1 id="hero-title">Your apps.<br>Your <span>proxy.</span></h1>
+<div class="actions"><a class="button primary" href="https://github.com/stependiant/proxyrun-releases/releases"><svg class="icon" aria-hidden="true"><use href="#i-windows"/></svg>Download for Windows</a><a class="button" href="https://github.com/stependiant/proxyrun-releases/blob/main/INSTALL.md#ubuntu-2404-amd64--ubuntu-2404-in-wsl-2"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>Install for Linux</a></div>
 </div></section>
-<div class="ribbon"><span>Bring your proxy. We’ll handle the route.</span><div class="protocols"><span>HTTP</span><span>HTTPS</span><span>SOCKS5</span></div><span class="ribbon-note"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Windows · Ubuntu · WSL</span></div>
-<section class="section" id="how-it-works"><div class="section-heading"><div><div class="eyebrow">SMALL APP. SIMPLE IDEA.</div><h2>Everything in its own lane.</h2></div><p>One place for your apps and proxies.<br>A setup that stays out of your way.</p></div>
-<div class="features"><article class="feature"><div class="feature-head"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg><span>01 / ROUTE</span></div><h3>A profile for every app.</h3><p>Choose a proxy profile for each application. Leave it unset to use your default. Your browser and terminal can take different routes.</p><span class="feature-tag">Personal &nbsp; / &nbsp; Work &nbsp; / &nbsp; Yours</span></article>
-<article class="feature"><div class="feature-head"><svg class="icon" aria-hidden="true"><use href="#i-auto"/></svg><span>02 / AUTOMATE</span></div><h3>Open it. Proxy it.</h3><p>Enable Auto proxy for an app, then open it as usual. Your saved rules handle the routing while Proxyrun runs in the background.</p><span class="feature-tag"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Less clicking. Same routine.</span></article>
-<article class="feature"><div class="feature-head"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg><span>03 / MAKE IT YOURS</span></div><h3>Click or command.</h3><p>A minimal desktop interface when you want it. A command-line tool when you need it. The same profiles, whichever way you work.</p><span class="feature-tag">Desktop UI &nbsp; + &nbsp; CLI</span></article></div></section>
-<section class="section install-section" id="install" aria-labelledby="install-title"><div class="install-card"><div><div class="eyebrow">YOUR NEXT ROUTE STARTS HERE.</div><h2 id="install-title">A small download.<br>A simpler setup.</h2><p>All current features are free. Bring your own proxy and get started without an account.</p><div class="install-links"><a class="button" href="https://github.com/stependiant/proxyrun-releases/releases">View releases<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="button" href="https://github.com/stependiant/proxyrun-releases/blob/main/INSTALL.md">Installation guide</a></div><p class="footnote">First beta in preparation. Downloads, WinGet and APT are not live yet.</p></div>
-<div class="install-options"><details id="windows-install"><summary><span>Windows <span style="color:#b29ba7">&nbsp; / &nbsp; x64</span></span></summary><div class="details-body">The upcoming Setup includes the desktop app, CLI and automatic capture-service setup. Run it, approve the service installation and open Proxyrun from Start.<p class="footnote">The current beta candidate is unsigned. Coming soon in Releases.</p></div></details>
-<details id="linux-install"><summary><span>Linux <span style="color:#b29ba7">&nbsp; / &nbsp; Ubuntu 24.04 · amd64</span></span></summary><div class="details-body">When the beta is published, download both DEB packages into one folder. For the desktop app and CLI, run:<pre><code>sudo apt install ./proxyrun_0.1.0-beta.1_amd64.deb ./proxyrun-gui_0.1.0-beta.1_amd64.deb</code></pre>For CLI only, install just the <code>proxyrun</code> package. APT repository setup will be in the <a href="https://github.com/stependiant/proxyrun-releases/blob/main/INSTALL.md">installation guide</a>.</div></details>
-<details><summary><span>Using WSL?</span></summary><div class="details-body">Use the Linux packages in Ubuntu 24.04 on WSL 2. The desktop interface requires WSLg. These packages route Linux applications; use the Windows installer for Windows apps.</div></details>
-<details><summary><span>About Auto proxy</span></summary><div class="details-body">Auto proxy can require administrator approval and change system routes and DNS. If system capture stops, apps can use ordinary system routing. There is no persistent system kill switch.</div></details></div></div></section>
-</main>
+<section class="network-section" aria-label="Application proxy routes">
+<div class="board" id="route-board"><svg class="routes" id="routes" aria-hidden="true"></svg>
+<div class="node app" data-app="browser" data-profile="personal">
+<button class="app-handle" aria-label="Select or move Browser" aria-pressed="false"><span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-browser"/></svg></span><strong>Browser</strong></button>
+<select class="profile-select" aria-label="Proxy profile for Browser"><option value="personal" selected>Personal</option><option value="work">Work</option></select></div>
+<div class="node app" data-app="terminal" data-profile="work">
+<button class="app-handle" aria-label="Select or move Terminal" aria-pressed="false"><span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg></span><strong>Terminal</strong></button>
+<select class="profile-select" aria-label="Proxy profile for Terminal"><option value="personal">Personal</option><option value="work" selected>Work</option></select></div>
+<div class="node app" data-app="music" data-profile="personal">
+<button class="app-handle" aria-label="Select or move Music" aria-pressed="false"><span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></span><strong>Music</strong></button>
+<select class="profile-select" aria-label="Proxy profile for Music"><option value="personal" selected>Personal</option><option value="work">Work</option></select></div>
+<button class="node profile" data-profile="personal" aria-label="Use or move Personal profile"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><strong>Personal</strong></button>
+<button class="node profile" data-profile="work" aria-label="Use or move Work profile"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg><strong>Work</strong></button>
+<div class="internet" role="img" aria-label="Internet"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
+</div><p class="sr-only" role="status" id="route-announcement"></p></section>
+<section class="features" aria-label="Features">
+<article class="feature"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg><h2>A profile for every app.</h2><p>Choose a proxy for each application, or let it use your default profile.</p></article>
+<article class="feature"><svg class="icon" aria-hidden="true"><use href="#i-auto"/></svg><h2>Open it. Proxy it.</h2><p>Enable Auto proxy. Open your apps as usual while Proxyrun handles the routing.</p></article>
+<article class="feature"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg><h2>Click or command.</h2><p>Desktop UI and CLI. The same profiles, whichever way you work.</p></article>
+</section></main>
 <footer><div><a class="logo" href="#" aria-label="Proxyrun home"><span class="brand-mark"><svg class="icon"><use href="#i-mark"/></svg></span><span>proxyrun<span class="logo-dot">.</span></span></a><p>© 2026 Rodion Masalov. Your proxy, your choice.</p></div><nav aria-label="Footer"><a href="https://github.com/stependiant/proxyrun-releases/issues">Feedback ↗</a><a href="mailto:rodionmasalov34@gmail.com">Contact</a><a href="https://github.com/stependiant/proxyrun-releases/blob/main/README.md">Licenses &amp; sources</a></nav></footer>
 </div>
 <script>
-(()=>{
-'use strict';
-const board=document.querySelector('#route-board'), routes=document.querySelector('#routes');
-const apps=[...board.querySelectorAll('.app')], profiles=[...board.querySelectorAll('.profile')];
-const status=document.querySelector('#board-status'), announcement=document.querySelector('#demo-announcement');
-const initial={browser:'personal',terminal:'work',music:'personal'};
-let selected=apps[0], gesture=null, ignoreClick=false;
-const title=key=>key==='personal'?'Personal':'Work';
-function select(app){selected=app;apps.forEach(a=>a.setAttribute('aria-pressed',String(a===app)));status.textContent=app.querySelector('strong').textContent+' selected · choose a profile';}
-function point(element,side){const b=board.getBoundingClientRect(),r=element.getBoundingClientRect();return {x:(side==='right'?r.right:r.left)-b.left,y:r.top+r.height/2-b.top};}
-function curve(from,to){const bend=Math.max(18,(to.x-from.x)*.55);return `M ${from.x} ${from.y} C ${from.x+bend} ${from.y}, ${to.x-bend} ${to.y}, ${to.x} ${to.y}`;}
-function addRoute(from,to,profile,index){const d=curve(from,to);for(const kind of ['route-base','route-packet']){const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);p.setAttribute('class',kind+(profile==='work'?' secondary':''));p.style.animationDelay=(-index*1.2)+'s';routes.append(p);}}
-function draw(){routes.replaceChildren();routes.setAttribute('viewBox',`0 0 ${board.clientWidth} ${board.clientHeight}`);apps.forEach((a,i)=>{const p=profiles.find(p=>p.dataset.profile===a.dataset.profile);addRoute(point(a,'right'),point(p,'left'),a.dataset.profile,i);});profiles.forEach((p,i)=>{if(apps.some(a=>a.dataset.profile===p.dataset.profile))addRoute(point(p,'right'),point(board.querySelector('.internet'),'left'),p.dataset.profile,i+3);});}
-function counts(){profiles.forEach(p=>{const n=apps.filter(a=>a.dataset.profile===p.dataset.profile).length;p.querySelector('small').textContent=`${n} ${n===1?'app':'apps'} connected`;});}
-function assign(profile){selected.dataset.profile=profile;selected.querySelector('small').textContent=title(profile)+' profile';counts();draw();const message=selected.querySelector('strong').textContent+' → '+title(profile)+' profile';status.textContent=message;announcement.textContent=message;}
-apps.forEach(app=>{
- app.addEventListener('click',()=>{if(!ignoreClick)select(app);});
- app.addEventListener('pointerdown',event=>{if(event.button!==0||gesture)return;select(app);gesture={app,id:event.pointerId,x:event.clientX,y:event.clientY,ghost:null};app.setPointerCapture(event.pointerId);});
- app.addEventListener('pointermove',event=>{if(!gesture||gesture.id!==event.pointerId)return;if(!gesture.ghost&&Math.hypot(event.clientX-gesture.x,event.clientY-gesture.y)>6){const ghost=app.cloneNode(true);ghost.removeAttribute('aria-describedby');ghost.removeAttribute('data-app');ghost.setAttribute('aria-hidden','true');ghost.tabIndex=-1;ghost.classList.add('drag-ghost');document.body.append(ghost);gesture.ghost=ghost;app.classList.add('dragging');}if(gesture.ghost){gesture.ghost.style.left=(event.clientX-45)+'px';gesture.ghost.style.top=(event.clientY-25)+'px';profiles.forEach(p=>p.classList.toggle('drop-target',hit(p,event)));}});
- app.addEventListener('pointerup',event=>finish(event,true));
- app.addEventListener('pointercancel',event=>finish(event,false));
- app.addEventListener('lostpointercapture',event=>finish(event,false));
-});
-function hit(element,event){const r=element.getBoundingClientRect();return event.clientX>=r.left&&event.clientX<=r.right&&event.clientY>=r.top&&event.clientY<=r.bottom;}
-function finish(event,commit){if(!gesture||gesture.id!==event.pointerId)return;const g=gesture;gesture=null;if(g.ghost){if(commit){const target=profiles.find(p=>hit(p,event));if(target)assign(target.dataset.profile);}g.ghost.remove();g.app.classList.remove('dragging');ignoreClick=true;setTimeout(()=>{ignoreClick=false;},0);}profiles.forEach(p=>p.classList.remove('drop-target'));if(g.app.hasPointerCapture(event.pointerId))g.app.releasePointerCapture(event.pointerId);}
-profiles.forEach(p=>p.addEventListener('click',()=>assign(p.dataset.profile)));
-document.querySelector('#reset-demo').addEventListener('click',()=>{if(gesture)finish({pointerId:gesture.id},false);apps.forEach(a=>{a.dataset.profile=initial[a.dataset.app];a.querySelector('small').textContent=title(a.dataset.profile)+' profile';});select(apps[0]);counts();draw();announcement.textContent='Demo reset. Browser selected.';});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&gesture)finish({pointerId:gesture.id},false);});
-const motion=document.querySelector('#motion-toggle'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
-function preference(){board.classList.toggle('paused',reduced.matches);motion.disabled=reduced.matches;motion.setAttribute('aria-pressed',String(reduced.matches));motion.textContent=reduced.matches?'Motion reduced':'Pause animation';}
-preference();reduced.addEventListener('change',preference);
-motion.addEventListener('click',()=>{const paused=board.classList.toggle('paused');motion.textContent=paused?'Play animation':'Pause animation';motion.setAttribute('aria-pressed',String(paused));});
-new ResizeObserver(draw).observe(board);counts();draw();
-function openInstall(){const target=document.getElementById(location.hash.slice(1));if(target instanceof HTMLDetailsElement)target.open=true;}
-document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{const target=document.getElementById(link.getAttribute('href').slice(1));if(target instanceof HTMLDetailsElement)target.open=true;}));
-window.addEventListener('hashchange',openInstall);openInstall();
+(() => {
+  'use strict';
+  const board = document.querySelector('#route-board');
+  const routes = document.querySelector('#routes');
+  const apps = [...board.querySelectorAll('.app')];
+  const profiles = [...board.querySelectorAll('.profile')];
+  const nodes = [...apps, ...profiles];
+  const announcement = document.querySelector('#route-announcement');
+  const narrow = matchMedia('(max-width: 700px)');
+  const positions = new Map();
+  const suppressClick = new WeakMap();
+  let selected = apps[0], gesture = null, frame = 0;
+
+  function locate(node, position) {
+    // Keep the entire control inside the page, including after a viewport resize.
+    const x = Math.max(node.offsetWidth / 2, Math.min(board.clientWidth - node.offsetWidth / 2, position.x * board.clientWidth));
+    const y = Math.max(node.offsetHeight / 2, Math.min(board.clientHeight - node.offsetHeight / 2, position.y * board.clientHeight));
+    const constrained = { x: x / board.clientWidth, y: y / board.clientHeight };
+    positions.set(node, constrained);
+    node.style.left = `${constrained.x * 100}%`;
+    node.style.top = `${constrained.y * 100}%`;
+  }
+  function arrange() {
+    if (gesture) finish(null, false);
+    const layout = narrow.matches
+      ? [[.23,.18],[.23,.42],[.23,.66],[.77,.30],[.77,.57]]
+      : [[.14,.20],[.14,.50],[.14,.80],[.53,.34],[.53,.67]];
+    nodes.forEach((node, i) => locate(node, {x: layout[i][0], y: layout[i][1]}));
+    scheduleDraw();
+  }
+  function point(element, side) {
+    const b = board.getBoundingClientRect(), r = element.getBoundingClientRect();
+    return {x: (side === 'right' ? r.right : side === 'left' ? r.left : r.left + r.width / 2) - b.left,
+      y: (side === 'bottom' ? r.bottom : side === 'top' ? r.top : r.top + r.height / 2) - b.top};
+  }
+  function connect(fromNode, toNode, profile, vertical = false) {
+    const from = point(fromNode, vertical ? 'bottom' : 'right');
+    const to = point(toNode, vertical ? 'top' : 'left');
+    const bend = Math.max(30, Math.abs(vertical ? to.y - from.y : to.x - from.x) * .5);
+    const d = vertical
+      ? `M ${from.x} ${from.y} C ${from.x} ${from.y + bend}, ${to.x} ${to.y - bend}, ${to.x} ${to.y}`
+      : `M ${from.x} ${from.y} C ${from.x + bend} ${from.y}, ${to.x - bend} ${to.y}, ${to.x} ${to.y}`;
+    for (const kind of ['route-base', 'route-packet']) {
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', kind + (profile === 'work' ? ' secondary' : ''));
+      routes.append(path);
+    }
+  }
+  function draw() {
+    routes.replaceChildren();
+    routes.setAttribute('viewBox', `0 0 ${board.clientWidth} ${board.clientHeight}`);
+    apps.forEach(app => connect(app, profiles.find(p => p.dataset.profile === app.dataset.profile), app.dataset.profile));
+    profiles.forEach(profile => {
+      if (apps.some(app => app.dataset.profile === profile.dataset.profile)) {
+        connect(profile, board.querySelector('.internet'), profile.dataset.profile, narrow.matches);
+      }
+    });
+  }
+  function scheduleDraw() {
+    if (!frame) frame = requestAnimationFrame(() => { frame = 0; draw(); });
+  }
+  function select(app) {
+    selected = app;
+    apps.forEach(node => {
+      node.classList.toggle('selected', node === app);
+      node.querySelector('.app-handle').setAttribute('aria-pressed', String(node === app));
+    });
+    profiles.forEach(profile => {
+      const active = profile.dataset.profile === app.dataset.profile;
+      profile.classList.toggle('active', active);
+      profile.setAttribute('aria-pressed', String(active));
+    });
+  }
+  function assign(app, profile) {
+    app.dataset.profile = profile;
+    app.querySelector('select').value = profile;
+    select(app);
+    scheduleDraw();
+    announcement.textContent = `${app.querySelector('strong').textContent} → ${profile === 'work' ? 'Work' : 'Personal'}`;
+  }
+  function hit(node, event) {
+    const r = node.getBoundingClientRect();
+    return event.clientX >= r.left && event.clientX <= r.right && event.clientY >= r.top && event.clientY <= r.bottom;
+  }
+  function targetAt(event) {
+    return nodes.find(node => node !== gesture.node && hit(node, event));
+  }
+  function finish(event, commit) {
+    if (!gesture || (event && event.pointerId !== gesture.id)) return;
+    const g = gesture;
+    const target = commit && g.moved ? targetAt(event) : null;
+    gesture = null;
+    if (!commit) locate(g.node, g.start);
+    if (g.moved) {
+      suppressClick.set(g.node, performance.now() + 250);
+      if (target) {
+        if (g.node.classList.contains('app') && target.classList.contains('profile')) {
+          locate(g.node, g.start);
+          assign(g.node, target.dataset.profile);
+        } else if (g.node.classList.contains('profile') && target.classList.contains('app')) {
+          locate(g.node, g.start);
+          assign(target, g.node.dataset.profile);
+        } else {
+          const position = {...positions.get(target)};
+          locate(target, g.start);
+          locate(g.node, position);
+        }
+      }
+    }
+    g.node.classList.remove('dragging');
+    nodes.forEach(node => node.classList.remove('drop-target'));
+    if (g.handle.hasPointerCapture(g.id)) g.handle.releasePointerCapture(g.id);
+    scheduleDraw();
+  }
+  nodes.forEach(node => {
+    const isApp = node.classList.contains('app');
+    const handle = isApp ? node.querySelector('.app-handle') : node;
+    handle.addEventListener('click', event => {
+      if (event.detail && performance.now() < (suppressClick.get(node) || 0)) return;
+      if (isApp) select(node); else assign(selected, node.dataset.profile);
+    });
+    handle.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || gesture) return;
+      if (isApp) select(node);
+      gesture = {node, handle, id: event.pointerId, start: {...positions.get(node)},
+        x: event.clientX, y: event.clientY, moved: false};
+      handle.setPointerCapture(event.pointerId);
+    });
+    handle.addEventListener('pointermove', event => {
+      if (!gesture || gesture.id !== event.pointerId) return;
+      const dx = event.clientX - gesture.x, dy = event.clientY - gesture.y;
+      if (!gesture.moved && Math.hypot(dx, dy) < 6) return;
+      gesture.moved = true;
+      node.classList.add('dragging');
+      const target = targetAt(event);
+      nodes.forEach(n => n.classList.toggle('drop-target', n === target));
+      locate(node, {x: gesture.start.x + dx / board.clientWidth, y: gesture.start.y + dy / board.clientHeight});
+      scheduleDraw();
+    });
+    handle.addEventListener('pointerup', event => finish(event, true));
+    handle.addEventListener('pointercancel', event => finish(event, false));
+    handle.addEventListener('lostpointercapture', event => finish(event, false));
+    handle.addEventListener('keydown', event => {
+      const directions = {ArrowLeft: [-1,0], ArrowRight: [1,0], ArrowUp: [0,-1], ArrowDown: [0,1]};
+      const direction = directions[event.key];
+      if (!direction || gesture) return;
+      event.preventDefault();
+      const start = positions.get(node), step = event.shiftKey ? 30 : 10;
+      locate(node, {x: start.x + direction[0] * step / board.clientWidth, y: start.y + direction[1] * step / board.clientHeight});
+      scheduleDraw();
+    });
+    if (isApp) node.querySelector('select').addEventListener('change', event => assign(node, event.target.value));
+  });
+  document.addEventListener('keydown', event => {if (event.key === 'Escape') finish(null, false);});
+  window.addEventListener('blur', () => finish(null, false));
+  narrow.addEventListener('change', arrange);
+  new ResizeObserver(() => {
+    nodes.forEach(node => {if (positions.has(node)) locate(node, positions.get(node));});
+    scheduleDraw();
+  }).observe(board);
+  new IntersectionObserver(entries => {
+    const visible = entries[0].isIntersecting;
+    board.classList.toggle('offscreen', !visible);
+    if (visible) scheduleDraw();
+  }).observe(board);
+  arrange();
+  select(selected);
 })();
 </script>
 </body></html>
