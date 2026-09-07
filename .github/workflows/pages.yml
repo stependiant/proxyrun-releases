@@ -27,7 +27,7 @@ jobs:
       - name: Stage the public site
         run: |
           test -f published-data/apt/dists/noble/InRelease
-          test -f published-data/third-party/0.1.0-beta.1/proxyrun-third-party-0.1.0-beta.1.tar.gz
+          test -d published-data/third-party/0.1.0-beta.2
           mkdir site
           cp index.html site/index.html
           cp -R wiki site/wiki
@@ -36,9 +36,21 @@ jobs:
           cp -R assets site/assets
           cp published-data/SHA256SUMS site/SHA256SUMS
           cp -R published-data/apt published-data/third-party site/
+          # Source archives can exceed Git's file limit. Only website-data stores
+          # chunks; the deployed site serves the reconstructed, verified archive.
+          for source in published-data/third-party/*/proxyrun-third-party-*.tar.gz.part-000; do
+            test -f "$source" || continue
+            combined="${source%.part-000}"
+            target="site/${combined#published-data/}"
+            cat "$combined".part-* > "$target"
+            rm "$target".part-*
+          done
+          for sums in site/third-party/*/SHA256SUMS; do
+            (cd "$(dirname "$sums")" && sha256sum --check SHA256SUMS)
+          done
           gpgv --keyring "$PWD/site/apt/proxyrun-archive-keyring.gpg" site/apt/dists/noble/InRelease
-          cd site/third-party/0.1.0-beta.1
-          awk '$2 == "proxyrun-third-party-0.1.0-beta.1.tar.gz" { print }' ../../SHA256SUMS > sources.sha256
+          cd site/third-party/0.1.0-beta.2
+          awk '$2 == "proxyrun-third-party-0.1.0-beta.2.tar.gz" { print }' ../../SHA256SUMS > sources.sha256
           test "$(wc -l < sources.sha256)" -eq 1
           sha256sum --check sources.sha256
           rm sources.sha256

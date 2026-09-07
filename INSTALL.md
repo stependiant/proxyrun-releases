@@ -1,14 +1,21 @@
 # Install Proxyrun
 
-Beta 0.1.0-beta.1 is available for Windows x64 and Ubuntu 24.04 amd64, including
-Ubuntu under WSL 2. Installers and the signed APT repository are available.
+Beta 0.1.0-beta.2 is available for Windows x64 and Ubuntu 24.04 amd64, including
+Ubuntu under WSL 2. Download the installers from
+[the beta 2 release](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.2)
+or use the signed APT repository.
 WinGet submission is still pending.
 
 ## Windows x64
 
 Download the official `Proxyrun-Windows-x64-Setup.exe` from this repository's Releases and double-click
 it. This beta installer is unsigned. It includes CLI, GUI and capture components. Windows can request
-administrator authorization for the capture service. Launch Proxyrun from Start;
+administrator authorization when you enable the optional capture service from
+Applications → Enable capture service, or run `proxyrun service install`. Setup
+registers the desktop, CLI and user startup without requiring this service.
+Without the service, instance launches request authorization when needed.
+WebView2 is required. Setup downloads Microsoft's official runtime if it is missing, so that first installation needs internet access.
+Launch Proxyrun from Start;
 open a new terminal to use `prun` or `proxyrun`.
 
 After WinGet acceptance:
@@ -28,10 +35,10 @@ For a manual installation, download both `.deb` files from the same release, ope
 a terminal in the download directory and run:
 
 ```bash
-sudo apt install ./proxyrun_0.1.0-beta.1_amd64.deb ./proxyrun-gui_0.1.0-beta.1_amd64.deb
+sudo apt install ./proxyrun_0.1.0-beta.2_amd64.deb ./proxyrun-gui_0.1.0-beta.2_amd64.deb
 ```
 
-For CLI only, download and install just `proxyrun_0.1.0-beta.1_amd64.deb`.
+For CLI only, download and install just `proxyrun_0.1.0-beta.2_amd64.deb`.
 
 Add the signed APT repository using its dedicated public key and
 source, then install `proxyrun-gui`. It depends on the CLI package `proxyrun`.
@@ -74,3 +81,44 @@ Before removal, close Proxyrun and applications using its proxy sessions, then r
 Linux/WSL packages target Linux programs. Install the native Windows version to
 proxy Windows applications. Native Ubuntu and WSL require separate compatibility
 checks; a passing packaging test is not a capture test.
+
+## Updating safely
+
+Before an update, close desktop-owned launches, disable Auto proxy for saved
+applications and run `proxyrun shutdown` when you intend to stop the remaining
+Proxyrun sessions. Other programs may depend on these sessions. The installer
+refuses running Windows components instead of terminating them.
+
+For an in-place Windows update, run the new Setup with `/UPDATE` (add `/S` for
+silent installation). WinGet upgrade manifests use this switch. When the optional
+capture service is already installed, Setup requests administrator approval to
+update its privileged helper too. Choosing to uninstall beta 1 first also
+removes its service; enable it again in beta 2 if needed. Administrator approval
+is required to install/update/remove that optional machine service, including uninstall
+when it is present. Profiles remain in the user's directory.
+
+On Ubuntu, `sudo apt update && sudo apt upgrade` uses the manually configured
+Proxyrun repository. Package scripts do not restart user daemons or proxy
+sessions. If an older daemon is still running, beta 2 reports the version
+mismatch and asks you to finish its sessions before restarting it.
+
+Ubuntu 24.04 packages include an AppArmor profile allowing user namespaces for
+`/usr/lib/proxyrun/proxyrun` and `/usr/lib/proxyrun/sing-box`. They do not disable
+Ubuntu's global restriction. A custom kernel, container or local policy may still
+prevent capture. Use Help & diagnostics or `proxyrun diagnostics` for component
+status; the presence of a profile is not proof that capture works on your system.
+
+## Removing the APT source
+
+Removing Proxyrun packages does not remove a repository you connected manually.
+After removing the packages, you can remove these specific repository files:
+
+```bash
+sudo rm /etc/apt/sources.list.d/proxyrun.sources
+sudo rm /etc/apt/preferences.d/proxyrun.pref
+sudo rm /usr/share/keyrings/proxyrun-archive-keyring.gpg
+sudo apt update
+```
+
+This is Proxyrun's own signed repository. It is not an Ubuntu or Debian official
+repository, and its `main` component is only a label inside this repository.

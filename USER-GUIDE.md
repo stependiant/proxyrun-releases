@@ -1,6 +1,6 @@
 # Proxyrun Wiki
 
-Install Proxyrun, configure proxies and connect your apps. Windows x64 and Ubuntu 24.04 / WSL 2 · 0.1.0-beta.1.
+Windows x64 and Ubuntu 24.04 / WSL 2 · 0.1.0-beta.2.
 
 ## Contents
 
@@ -14,6 +14,7 @@ Install Proxyrun, configure proxies and connect your apps. Windows x64 and Ubunt
 - [Command-line quick reference](#command-line)
 - [Troubleshooting](#troubleshooting)
 - [Updates and removal](#updates-and-removal)
+- [Diagnostics, background use and updates](#diagnostics-updates)
 
 <a id="quick-start"></a>
 
@@ -36,7 +37,7 @@ A profile is a saved proxy connection: its address, port, protocol and optional 
 ### Windows x64
 
 1. Download Proxyrun-Windows-x64-Setup.exe from the release page.
-2. Run Setup and approve the Windows administrator prompt for capture-service installation. The installer starts the service automatically.
+2. Run Setup for your user account. Enable the optional capture service in Applications when you want to avoid an administrator prompt for each ordinary launch. Windows asks for approval when you enable it.
 3. Open Proxyrun from the Start menu. Open a new terminal if you want to use prun or proxyrun commands.
 
 The installer includes the desktop UI and CLI. This beta is unsigned, so Windows may show a publisher or SmartScreen warning. Check that you downloaded it from the official release page; the website provides SHA256 checksums.
@@ -53,14 +54,14 @@ sudo apt install proxyrun-gui
 For CLI only, install proxyrun instead. For manual installation, download both DEB files into the same folder and run:
 
 ```bash
-sudo apt install ./proxyrun_0.1.0-beta.1_amd64.deb ./proxyrun-gui_0.1.0-beta.1_amd64.deb
+sudo apt install ./proxyrun_0.1.0-beta.2_amd64.deb ./proxyrun-gui_0.1.0-beta.2_amd64.deb
 ```
 
 WSL packages run Linux applications. To proxy a Windows application, use native Windows Proxyrun. The Linux desktop UI under WSL requires WSLg. These packages target Ubuntu 24.04 amd64; other distributions and macOS are not part of this release. WinGet submission is pending.
 
 [Full installation and APT setup](https://github.com/stependiant/proxyrun-releases/blob/main/INSTALL.md)
 
-[Download the beta installers](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.1)
+[Download the beta installers](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.2)
 
 
 <a id="profiles"></a>
@@ -147,6 +148,8 @@ To turn it off for an app, edit the app and clear Auto proxy. Disabling all rule
 
 Auto proxy changes system routes and DNS while active. It is not a persistent firewall kill switch: startup failure or a capture-engine crash can leave normally launched apps using ordinary system routing. Do not assume a failed or stopped Auto proxy session blocks all direct traffic. With several profiles, application connections follow their assignments, but intercepted DNS is shared and uses the first profile in name order.
 
+Beta 2 checks and authorizes new settings before stopping working rules. If the new engine fails to start, it attempts to restore the previous rules. This is not an atomic switch: direct connections may be possible during replacement. Rules active means the engine is running, not that a proxy connection has been checked. The interface shows which profile carries shared DNS.
+
 
 <a id="interactive-terminal"></a>
 
@@ -154,9 +157,11 @@ Auto proxy changes system routes and DNS while active. It is not a persistent fi
 
 For an interactive command, add the command or its executable in Applications, enable Open in terminal and choose its proxy profile. The command must already be installed and runnable on that operating system.
 
+On Windows, prun launched from PowerShell uses that edition's external-command lookup and runs .ps1 scripts with its inherited execution policy. Script errors and exit codes come from PowerShell itself. An npm command with .ps1, .cmd and Unix wrappers uses the appropriate Windows wrapper; explicit .cmd and .bat commands are also supported. PowerShell profiles are not run again, and interactive functions and aliases are not copied into the child process.
+
 Launch opens an interactive terminal window for keyboard input. Closing that terminal window keeps its process running; reopen it from the application row. Use Stop when you want to end the launch.
 
-The main window asks before closing when it owns running application launches. Minimize it to keep those launches open. Closing an idle GUI does not stop CLI-owned sessions or saved Auto proxy rules. This beta does not have a tray icon.
+The main window asks before closing when it owns running application launches. You can keep launches running in the tray. Closing an idle GUI does not stop CLI-owned sessions or saved Auto proxy rules.
 
 
 <a id="command-line"></a>
@@ -237,7 +242,7 @@ Include your Proxyrun version, OS, exact error and the smallest set of steps tha
 
 ## Updates and removal
 
-On Windows, close active launches and the GUI, then run the new official Setup. To uninstall, use Windows Settings → Apps. If upgrading from the earlier ZIP preview, uninstall that preview with install.cmd -Uninstall before using Setup. Saved profiles are preserved.
+On Windows, close active launches and the GUI, then run the new official Setup. To uninstall, use Windows Settings → Apps. If upgrading from the earlier ZIP preview, uninstall that preview with install.cmd -Uninstall before using Setup. Saved profiles are preserved. If Windows still holds the loaded capture driver during removal, Proxyrun schedules only its retired driver copy for deletion at the next restart. The uninstaller reports that a restart is needed; it never restarts Windows automatically. Reinstalling before that restart does not put the new files on the deletion list.
 
 On Ubuntu or WSL with the APT repository configured, update using:
 
@@ -254,3 +259,14 @@ sudo apt remove proxyrun-gui proxyrun
 ```
 
 Removing the packages preserves saved profiles. Keep proxy credentials private when backing up configuration or sharing screenshots.
+
+
+<a id="diagnostics-updates"></a>
+
+## Diagnostics, background use and updates
+
+Open Help & diagnostics to see the installed version, review a report and save it. The CLI equivalent is proxyrun diagnostics. It reports versions and component status without credentials, proxy addresses, profile names, application paths or connection history. It does not start capture or test an external connection. Review the report before sharing it.
+
+When closing with active desktop launches or Auto proxy enabled, choose Keep in background to hide the window in the system tray. Reopen it from the tray or launch Proxyrun again. Exit desktop stops desktop-owned launches; Auto proxy and independent CLI sessions continue. Disable Auto proxy explicitly to stop its rules.
+
+Updates are manual on Windows or delivered through the APT repository you connected on Ubuntu. Finish active launches and disable Auto proxy before updating. Windows Setup with /UPDATE performs an in-place upgrade and requests administrator approval to update an already installed capture service; running components are never forcibly closed by the beta 2 preflight. A background version mismatch requires a deliberate restart after closing sessions.
