@@ -242,7 +242,7 @@ Include your Proxyrun version, OS, exact error and the smallest set of steps tha
 
 ## Updates and removal
 
-On Windows, close active launches and the GUI, then run the new official Setup. To uninstall, use Windows Settings → Apps. If upgrading from the earlier ZIP preview, uninstall that preview with install.cmd -Uninstall before using Setup. Saved profiles are preserved. If Windows still holds the loaded capture driver during removal, Proxyrun schedules only its retired driver copy for deletion at the next restart. The uninstaller reports that a restart is needed; it never restarts Windows automatically. Reinstalling before that restart does not put the new files on the deletion list.
+Before a Windows update or removal, close active launches and the GUI, disable Auto proxy and run proxyrun shutdown when you are ready to stop the remaining proxy sessions. Other programs may depend on those sessions. Run the new official Setup with /UPDATE for an in-place update. To uninstall, use Windows Settings → Apps after the background components have stopped. If upgrading from the earlier ZIP preview, uninstall that preview with install.cmd -Uninstall before using Setup. Saved profiles are preserved. If Windows still holds the loaded capture driver during removal, Proxyrun schedules only its retired driver copy for deletion at the next restart. The uninstaller reports that a restart is needed; it never restarts Windows automatically. Reinstalling before that restart does not put the new files on the deletion list.
 
 On Ubuntu or WSL with the APT repository configured, update using:
 

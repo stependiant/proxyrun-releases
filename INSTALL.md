@@ -4,12 +4,12 @@ Beta 0.1.0-beta.2 is available for Windows x64 and Ubuntu 24.04 amd64, including
 Ubuntu under WSL 2. Download the installers from
 [the beta 2 release](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.2)
 or use the signed APT repository.
-WinGet submission is still pending.
+The [WinGet submission](https://github.com/microsoft/winget-pkgs/pull/431127) is under review; this version is not available in the catalog yet.
 
 ## Windows x64
 
 Download the official `Proxyrun-Windows-x64-Setup.exe` from this repository's Releases and double-click
-it. This beta installer is unsigned. It includes CLI, GUI and capture components. Windows can request
+it. This beta installer is unsigned. If SmartScreen blocks its launch, verify the download against the official release SHA256 before choosing More info → Run anyway. It includes CLI, GUI and capture components. Windows can request
 administrator authorization when you enable the optional capture service from
 Applications → Enable capture service, or run `proxyrun service install`. Setup
 registers the desktop, CLI and user startup without requiring this service.
@@ -82,12 +82,12 @@ Linux/WSL packages target Linux programs. Install the native Windows version to
 proxy Windows applications. Native Ubuntu and WSL require separate compatibility
 checks; a passing packaging test is not a capture test.
 
-## Updating safely
+## Updating and removing safely
 
-Before an update, close desktop-owned launches, disable Auto proxy for saved
+Before an update or removal, close the GUI and desktop-owned launches, disable Auto proxy for saved
 applications and run `proxyrun shutdown` when you intend to stop the remaining
 Proxyrun sessions. Other programs may depend on these sessions. The installer
-refuses running Windows components instead of terminating them.
+refuses running Windows components instead of terminating them. Once those components have stopped, remove Windows Proxyrun through Settings → Apps. Saved profiles are preserved.
 
 For an in-place Windows update, run the new Setup with `/UPDATE` (add `/S` for
 silent installation). WinGet upgrade manifests use this switch. When the optional
