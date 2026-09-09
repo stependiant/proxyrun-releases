@@ -1,17 +1,17 @@
 # Install Proxyrun
 
-Beta 0.1.0-beta.2 is available for Windows x64 and Ubuntu 24.04 amd64, including
+Beta 0.1.0-beta.3 is available for Windows x64 and Ubuntu 24.04 amd64, including
 Ubuntu under WSL 2. Download the installers from
-[the beta 2 release](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.2)
+[the beta 3 release](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.3)
 or use the signed APT repository.
 The [WinGet submission](https://github.com/microsoft/winget-pkgs/pull/431127) is under review; this version is not available in the catalog yet.
 
 ## Windows x64
 
 Download the official `Proxyrun-Windows-x64-Setup.exe` from this repository's Releases and double-click
-it. This beta installer is unsigned. If SmartScreen blocks its launch, verify the download against the official release SHA256 before choosing More info → Run anyway. It includes CLI, GUI and capture components. Windows can request
+it. This beta installer is unsigned. If SmartScreen blocks its launch, verify the download against the official release SHA256 before choosing More info, then Run anyway. It includes CLI, GUI and capture components. Windows can request
 administrator authorization when you enable the optional capture service from
-Applications → Enable capture service, or run `proxyrun service install`. Setup
+Applications, then Enable capture service, or run `proxyrun service install`. Setup
 registers the desktop, CLI and user startup without requiring this service.
 Without the service, instance launches request authorization when needed.
 WebView2 is required. Setup downloads Microsoft's official runtime if it is missing, so that first installation needs internet access.
@@ -35,10 +35,10 @@ For a manual installation, download both `.deb` files from the same release, ope
 a terminal in the download directory and run:
 
 ```bash
-sudo apt install ./proxyrun_0.1.0-beta.2_amd64.deb ./proxyrun-gui_0.1.0-beta.2_amd64.deb
+sudo apt install ./proxyrun_0.1.0-beta.3_amd64.deb ./proxyrun-gui_0.1.0-beta.3_amd64.deb
 ```
 
-For CLI only, download and install just `proxyrun_0.1.0-beta.2_amd64.deb`.
+For CLI only, download and install just `proxyrun_0.1.0-beta.3_amd64.deb`.
 
 Add the signed APT repository using its dedicated public key and
 source, then install `proxyrun-gui`. It depends on the CLI package `proxyrun`.
@@ -79,33 +79,44 @@ Before removal, close Proxyrun and applications using its proxy sessions, then r
 `sudo apt remove proxyrun-gui proxyrun`. This keeps saved profiles.
 
 Linux/WSL packages target Linux programs. Install the native Windows version to
-proxy Windows applications. Native Ubuntu and WSL require separate compatibility
-checks; a passing packaging test is not a capture test.
+proxy Windows applications.
 
 ## Updating and removing safely
 
-Before an update or removal, close the GUI and desktop-owned launches, disable Auto proxy for saved
+Beta 2 has no built-in updater. To reach beta 3, use the new Windows Setup
+with `/UPDATE` or the APT commands below. Keep your existing profiles; no profile
+format migration is required. Windows Setup preserves the existing installation
+directory, including custom paths with spaces.
+
+After installing beta 3, the desktop can report future updates and install them
+when you choose Update now. The CLI commands are `proxyrun update` to check and
+`proxyrun update --install` to install. Windows verifies the published installer
+size and SHA256 before starting it. Ubuntu requests the exact version through
+your configured signed APT repositories. Finish desktop and CLI sessions and
+disable Auto proxy first. The updater stops only an idle background service.
+
+Before running Setup manually or removing Proxyrun, close the GUI and desktop-owned launches, disable Auto proxy for saved
 applications and run `proxyrun shutdown` when you intend to stop the remaining
 Proxyrun sessions. Other programs may depend on these sessions. The installer
-refuses running Windows components instead of terminating them. Once those components have stopped, remove Windows Proxyrun through Settings → Apps. Saved profiles are preserved.
+refuses running Windows components instead of terminating them. Once those components have stopped, remove Windows Proxyrun through Settings, then Apps. Saved profiles are preserved.
 
 For an in-place Windows update, run the new Setup with `/UPDATE` (add `/S` for
 silent installation). WinGet upgrade manifests use this switch. When the optional
 capture service is already installed, Setup requests administrator approval to
-update its privileged helper too. Choosing to uninstall beta 1 first also
-removes its service; enable it again in beta 2 if needed. Administrator approval
+update its privileged helper too. Uninstalling an earlier beta first also
+removes its service; enable it again after reinstalling if needed. Administrator approval
 is required to install/update/remove that optional machine service, including uninstall
 when it is present. Profiles remain in the user's directory.
 
 On Ubuntu, `sudo apt update && sudo apt upgrade` uses the manually configured
 Proxyrun repository. Package scripts do not restart user daemons or proxy
-sessions. If an older daemon is still running, beta 2 reports the version
+sessions. If an older daemon is still running, Proxyrun reports the version
 mismatch and asks you to finish its sessions before restarting it.
 
 Ubuntu 24.04 packages include an AppArmor profile allowing user namespaces for
 `/usr/lib/proxyrun/proxyrun` and `/usr/lib/proxyrun/sing-box`. They do not disable
 Ubuntu's global restriction. A custom kernel, container or local policy may still
-prevent capture. Use Help & diagnostics or `proxyrun diagnostics` for component
+prevent capture. Use `Help & diagnostics` or `proxyrun diagnostics` for component
 status; the presence of a profile is not proof that capture works on your system.
 
 ## Removing the APT source

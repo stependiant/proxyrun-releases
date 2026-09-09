@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "latest": "0.1.0-beta.3",
+  "packages": {
+    "windows-x64": {
+      "url": "https://github.com/stependiant/proxyrun-releases/releases/download/v0.1.0-beta.3/Proxyrun-Windows-x64-Setup.exe",
+      "sha256": "4f478ddfdc26a12910eaba6940aa846224e3cda8f3d145ea447a4339721ec76f",
+      "size": 26058755
+    }
+  }
+}

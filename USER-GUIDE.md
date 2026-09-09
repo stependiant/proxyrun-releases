@@ -1,6 +1,6 @@
 # Proxyrun Wiki
 
-Windows x64 and Ubuntu 24.04 / WSL 2 · 0.1.0-beta.2.
+Windows x64 and Ubuntu 24.04 / WSL 2 · 0.1.0-beta.3.
 
 ## Contents
 
@@ -54,14 +54,14 @@ sudo apt install proxyrun-gui
 For CLI only, install proxyrun instead. For manual installation, download both DEB files into the same folder and run:
 
 ```bash
-sudo apt install ./proxyrun_0.1.0-beta.2_amd64.deb ./proxyrun-gui_0.1.0-beta.2_amd64.deb
+sudo apt install ./proxyrun_0.1.0-beta.3_amd64.deb ./proxyrun-gui_0.1.0-beta.3_amd64.deb
 ```
 
 WSL packages run Linux applications. To proxy a Windows application, use native Windows Proxyrun. The Linux desktop UI under WSL requires WSLg. These packages target Ubuntu 24.04 amd64; other distributions and macOS are not part of this release. WinGet submission is pending.
 
 [Full installation and APT setup](https://github.com/stependiant/proxyrun-releases/blob/main/INSTALL.md)
 
-[Download the beta installers](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.2)
+[Download the beta installers](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.3)
 
 
 <a id="profiles"></a>
@@ -242,7 +242,15 @@ Include your Proxyrun version, OS, exact error and the smallest set of steps tha
 
 ## Updates and removal
 
-Before a Windows update or removal, close active launches and the GUI, disable Auto proxy and run proxyrun shutdown when you are ready to stop the remaining proxy sessions. Other programs may depend on those sessions. Run the new official Setup with /UPDATE for an in-place update. To uninstall, use Windows Settings → Apps after the background components have stopped. If upgrading from the earlier ZIP preview, uninstall that preview with install.cmd -Uninstall before using Setup. Saved profiles are preserved. If Windows still holds the loaded capture driver during removal, Proxyrun schedules only its retired driver copy for deletion at the next restart. The uninstaller reports that a restart is needed; it never restarts Windows automatically. Reinstalling before that restart does not put the new files on the deletion list.
+Beta 2 has no built-in updater. Install beta 3 through Windows Setup with /UPDATE or your configured APT repository. Saved profiles need no format migration. Windows Setup preserves your existing installation directory, including custom paths with spaces.
+
+After installing beta 3, Proxyrun can report future releases. It reads one small file from the project website at most once a day. Update now asks for confirmation before installing. Skip this version hides that release until a newer one appears. Turn off Tell me when a new version is published in Help & diagnostics to disable the check.
+
+On Windows, Update now downloads the published installer, verifies its size and SHA256, then starts it. Proxyrun closes so Setup can replace its files. On Ubuntu, the package manager requests the exact version from your configured signed APT repositories and asks for system authorization. Reopen Proxyrun after installation to use the new build. Source installations show instructions for updating manually.
+
+Finish desktop and CLI sessions and disable Auto proxy before updating. The updater refuses active sessions and unfinished starts or stops. It stops only an idle background service. In a terminal, use proxyrun update to check, proxyrun update --install to install, or proxyrun update --skip to hide the offered version.
+
+Before running Windows Setup manually or removing Proxyrun, close active launches and the GUI, disable Auto proxy and run proxyrun shutdown when you are ready to stop the remaining proxy sessions. Other programs may depend on those sessions. Run the new official Setup with /UPDATE for an in-place update. To uninstall, use Windows Settings, then Apps after the background components have stopped. If upgrading from the earlier ZIP preview, uninstall that preview with install.cmd -Uninstall before using Setup. Saved profiles are preserved. If Windows still holds the loaded capture driver during removal, Proxyrun schedules only its retired driver copy for deletion at the next restart. The uninstaller reports that a restart is needed; it never restarts Windows automatically. Reinstalling before that restart does not put the new files on the deletion list.
 
 On Ubuntu or WSL with the APT repository configured, update using:
 
@@ -269,4 +277,4 @@ Open Help & diagnostics to see the installed version, review a report and save i
 
 When closing with active desktop launches or Auto proxy enabled, choose Keep in background to hide the window in the system tray. Reopen it from the tray or launch Proxyrun again. Exit desktop stops desktop-owned launches; Auto proxy and independent CLI sessions continue. Disable Auto proxy explicitly to stop its rules.
 
-Updates are manual on Windows or delivered through the APT repository you connected on Ubuntu. Finish active launches and disable Auto proxy before updating. Windows Setup with /UPDATE performs an in-place upgrade and requests administrator approval to update an already installed capture service; running components are never forcibly closed by the beta 2 preflight. A background version mismatch requires a deliberate restart after closing sessions.
+Manual updates use Windows Setup with /UPDATE or the configured APT repository. Windows Setup requests administrator approval to refresh an installed capture service. It waits up to 30 seconds for running components to exit and refuses the update if they remain active. It never closes them forcibly. If Proxyrun reports an older running background component, finish its sessions and restart it deliberately.

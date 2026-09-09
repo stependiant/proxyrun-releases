@@ -26,10 +26,41 @@ jobs:
           persist-credentials: false
       - name: Stage the public site
         run: |
+          version="$(python3 - <<'PY'
+          import hashlib, json, re, subprocess
+          from pathlib import Path
+          update = json.loads(Path('update.json').read_text())
+          version = update['latest']
+          assert re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+(?:-[A-Za-z0-9.]+)?', version)
+          package = update['packages']['windows-x64']
+          expected = f'https://github.com/stependiant/proxyrun-releases/releases/download/v{version}/Proxyrun-Windows-x64-Setup.exe'
+          assert update['schema'] == 1 and package['url'] == expected and package['size'] > 0
+          sums = dict(line.split('  ', 1)[::-1] for line in Path('published-data/SHA256SUMS').read_text().splitlines())
+          assert package['sha256'] == sums['Proxyrun-Windows-x64-Setup.exe']
+          apt = Path('published-data/apt').resolve()
+          release = subprocess.check_output(['gpgv', '--keyring', str(apt/'proxyrun-archive-keyring.gpg'),
+              '--output', '-', str(apt/'dists/noble/InRelease')], text=True)
+          index = apt/'dists/noble/main/binary-amd64/Packages'
+          signed_hash = re.search(r'^ ([a-f0-9]{64}) +[0-9]+ +main/binary-amd64/Packages$', release, re.M)
+          assert signed_hash and hashlib.sha256(index.read_bytes()).hexdigest() == signed_hash[1]
+          entries = [dict(line.split(': ', 1) for line in block.splitlines() if line and not line.startswith(' '))
+              for block in index.read_text().strip().split('\n\n')]
+          for name in ('proxyrun', 'proxyrun-gui'):
+              current = [entry for entry in entries if entry['Package'] == name and entry['Version'] == version.replace('-', '~', 1)]
+              assert len(current) == 1, f'Missing or duplicate current APT package: {name}'
+              filename = f'{name}_{version}_amd64.deb'
+              assert current[0]['Filename'] == 'pool/main/p/proxyrun/' + filename
+              assert current[0]['SHA256'] == sums[filename]
+              with (apt/current[0]['Filename']).open('rb') as package_file:
+                  assert hashlib.file_digest(package_file, 'sha256').hexdigest() == sums[filename]
+          print(version)
+          PY
+          )"
           test -f published-data/apt/dists/noble/InRelease
-          test -d published-data/third-party/0.1.0-beta.2
+          test -d "published-data/third-party/$version"
           mkdir site
           cp index.html site/index.html
+          cp update.json site/update.json
           cp -R wiki site/wiki
           cp sitemap.xml site/sitemap.xml
           cp indexnow.txt site/indexnow.txt
@@ -48,9 +79,8 @@ jobs:
           for sums in site/third-party/*/SHA256SUMS; do
             (cd "$(dirname "$sums")" && sha256sum --check SHA256SUMS)
           done
-          gpgv --keyring "$PWD/site/apt/proxyrun-archive-keyring.gpg" site/apt/dists/noble/InRelease
-          cd site/third-party/0.1.0-beta.2
-          awk '$2 == "proxyrun-third-party-0.1.0-beta.2.tar.gz" { print }' ../../SHA256SUMS > sources.sha256
+          cd "site/third-party/$version"
+          awk -v name="proxyrun-third-party-$version.tar.gz" '$2 == name { print }' ../../SHA256SUMS > sources.sha256
           test "$(wc -l < sources.sha256)" -eq 1
           sha256sum --check sources.sha256
           rm sources.sha256

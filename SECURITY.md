@@ -17,6 +17,16 @@ unsigned, so enable the service only from a package you trust, on a machine you
 believe is not already compromised. Launches without the service authorize each
 one separately and leave nothing installed.
 
+Updating from inside Proxyrun trusts what this website publishes. The manifest is
+read over HTTPS, a download must come from this project's own release URLs and
+must match the size and SHA-256 published with the release, and it is stored in a
+private directory before it runs. That catches a substituted or corrupted
+download; it does not protect against whoever could publish the manifest itself,
+and beta packages carry no code signature that the operating system could check
+independently. Ubuntu installations upgrade through the signed APT repository
+instead. Switch the check off in Help & diagnostics and install from the releases
+page manually if you prefer to verify each file yourself.
+
 The beta has not had an independent security audit. Auto proxy and system capture
 do not provide a persistent firewall kill switch. A crash or rule replacement
 can permit direct connections; see the user guide for platform limitations.

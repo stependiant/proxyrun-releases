@@ -1,4 +1,4 @@
-# Proxyrun — per-app proxy for Windows and Linux
+# Proxyrun - per-app proxy for Windows and Linux
 
 Proxyrun is a **free per-application proxy client** for Windows and Linux / WSL.
 Route browsers, desktop applications and command-line tools through your own
@@ -10,9 +10,11 @@ or subscriptions will be optional. Proxyrun is an independent application.
 [Website and downloads](https://stependiant.github.io/proxyrun-releases/) ·
 [Wiki and user guide](https://stependiant.github.io/proxyrun-releases/wiki/)
 
-**0.1.0-beta.2 — Windows x64 and Ubuntu 24.04 amd64 / WSL 2.**
+**0.1.0-beta.3 - Windows x64 and Ubuntu 24.04 amd64 / WSL 2.**
 Download installers from Releases or use the signed APT repository. WinGet is not
 available yet. This beta's Windows installer is unsigned.
+Beta 2 users upgrade through Setup or APT. After installing beta 3, Proxyrun can
+report and install future updates on request.
 
 ## Use cases
 
@@ -35,7 +37,7 @@ Use the pencil button on an application to choose its **Proxy profile**.
 Enable **Auto proxy** if you want the application to use the proxy when opened
 from its usual OS shortcut; wait for the rules to apply and restart the app.
 
-Prefer the terminal? Create a profile with `prun configure`, then launch an
+In a terminal, create a profile with `prun configure`, then launch an
 installed app with `prun chrome` or `prun run --profile work chrome`.
 `prun` and `proxyrun` share settings with the desktop app.
 
@@ -45,11 +47,11 @@ installed app with `prun chrome` or `prun run --profile work chrome`.
 
 ## Download
 
-Download from [Releases](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.2):
+Download from [Releases](https://github.com/stependiant/proxyrun-releases/releases/tag/v0.1.0-beta.3):
 
 | Platform | File | Includes |
 | --- | --- | --- |
-| Windows x64 | `Proxyrun-Windows-x64-Setup.exe` | Desktop UI + CLI; optional capture-service setup |
+| Windows x64 | `Proxyrun-Windows-x64-Setup.exe` | Desktop UI and CLI; optional capture-service setup |
 | Ubuntu 24.04 / WSL 2, amd64 | `proxyrun_<version>_amd64.deb` | CLI |
 | Ubuntu 24.04 / WSL 2, amd64 | `proxyrun-gui_<version>_amd64.deb` | Desktop UI; also requires the CLI package |
 
@@ -61,7 +63,7 @@ Auto proxy may require administrator approval. If system capture stops,
 applications can use ordinary system routing; there is no persistent system kill switch.
 
 Application source is private. This repository contains downloads and documentation.
-[Third-party licenses and sources](https://stependiant.github.io/proxyrun-releases/third-party/0.1.0-beta.2/proxyrun-third-party-0.1.0-beta.2.tar.gz)
+[Third-party licenses and sources](https://stependiant.github.io/proxyrun-releases/third-party/0.1.0-beta.3/proxyrun-third-party-0.1.0-beta.3.tar.gz)
 are provided separately and retain their own licenses. Proxyrun uses the
 [Proxyrun Freeware License](LICENSE): official binaries are free for personal and
 commercial use, including all existing features. Unmodified official installers
